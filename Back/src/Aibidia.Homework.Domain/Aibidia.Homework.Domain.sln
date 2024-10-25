@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aibidia.Homework.Domain", "Aibidia.Homework.Domain.csproj", "{537DBC1B-1EEB-49FC-A005-39CBBE48CBAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{537DBC1B-1EEB-49FC-A005-39CBBE48CBAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{537DBC1B-1EEB-49FC-A005-39CBBE48CBAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{537DBC1B-1EEB-49FC-A005-39CBBE48CBAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{537DBC1B-1EEB-49FC-A005-39CBBE48CBAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {859DB13F-9CD1-4C7D-A2FA-B40DDECBE192}
+	EndGlobalSection
+EndGlobal

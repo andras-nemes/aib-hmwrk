@@ -1,0 +1,14 @@
+@use 'defaults';
+@use '../colors';
+
+// Modal
+$modal-bg: var(--theme-white);
+$modal-overlay-bg: rgba(10, 10, 10, 0.8);
+$modal-header-bg: colors.$gray-50;
+$modal-header-title-color: var(--theme-grey-darkest);
+$modal-header-title-font-size: 1em;
+$modal-header-subtitle-color: colors.$gray-600;
+$modal-header-subtitle-font-size: 0.75em;
+$modal-header-counter-color: colors.$gray-600;
+$modal-header-counter-font-size: initial;
+$modal-border-radius: defaults.$card-border-radius;

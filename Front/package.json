@@ -1,0 +1,63 @@
+{
+    "name": "homework",
+    "version": "1.0.0",
+    "description": "Aibidia Homework",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "prod-build": "vite build",
+        "preview": "vite preview",
+        "test:unit:ci": "vitest --reporter=junit --watch=false --outputFile=./junit.xml --coverage",
+        "test:unit": "vitest",
+        "test:unit:coverage": "vitest run --coverage",
+        "lint:eslint": "eslint --ext .vue --ext .ts src/",
+        "lint:ts": "tsc --noEmit",
+        "lint:audit": "npm audit --registry=https://registry.npmjs.org/",
+        "coverage:unit": "vitest run --coverage"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ],
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.4.0",
+        "fast-deep-equal": "^3.1.3",
+        "file-saver": "^2.0.5",
+        "markdown-it": "^14.1.0",
+        "pinia": "^2.1.6",
+        "ramda": "^0.30.0",
+        "sanitize-filename": "^1.6.3",
+        "vue": "3.4.38",
+        "vue-i18n": "^9.4.1",
+        "vue-router": "^4.2.2",
+        "vue3-click-away": "^1.2.4",
+        "vuex": "^4.1.0"
+    },
+    "devDependencies": {
+        "@intlify/unplugin-vue-i18n": "^1.2.0",
+        "@types/file-saver": "^2.0.4",
+        "@types/node": "^20.6.0",
+        "@types/ramda": "^0.30.0",
+        "@typescript-eslint/eslint-plugin": "^6.7.0",
+        "@typescript-eslint/parser": "^6.7.0",
+        "@vitejs/plugin-vue": "^4.3.4",
+        "@vitest/coverage-v8": "^2.0.5",
+        "@vue/eslint-config-typescript": "^12.0.0",
+        "eslint": "^8.49.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-prettier-vue": "^5.0.0",
+        "eslint-plugin-vue": "^9.17.0",
+        "jsdom": "^22.1.0",
+        "lint-staged": "^14.0.1",
+        "prettier": "^3.0.3",
+        "resize-observer-polyfill": "^1.5.1",
+        "sass": "^1.67.0",
+        "typescript": "^5.2.2",
+        "vite": "^4.4.9",
+        "vite-plugin-html": "^3.2.0",
+        "vitest": "^2.0.5",
+        "vitest-fetch-mock": "^0.3.0",
+        "vue-tsc": "^2.0.22"
+    }
+}

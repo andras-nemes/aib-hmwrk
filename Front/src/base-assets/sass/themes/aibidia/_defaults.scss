@@ -1,0 +1,27 @@
+@use 'fullscreen';
+@use 'colors';
+
+// Defaults/Common variables used in various components
+$default-bg-color: #fff;
+$default-bg-color-darker: colors.$gray-50;
+$default-bg-color-hover: colors.$gray-50;
+$default-border-color: colors.$gray-200;
+$default-border-color-dark: colors.$gray-300;
+$default-text-color: var(--theme-grey-darkest);
+$default-text-color-hover: colors.$gray-950;
+
+$default-link-color: var(--theme-primary);
+$default-link-color-hover: var(--theme-primary-dark);
+
+$default-font-family: 'Saans', Arial, sans-serif;
+$default-font-size: 0.75rem;
+
+$default-icon-font-family: 'Font Awesome 5 Free';
+
+$default-padding: 0.75rem;
+$default-content-padding: 1em;
+$background-gradient: linear-gradient(
+    0deg,
+    #{fullscreen.$fullscreen-bg-dark} 0%,
+    #{fullscreen.$fullscreen-bg-light} 100%
+);

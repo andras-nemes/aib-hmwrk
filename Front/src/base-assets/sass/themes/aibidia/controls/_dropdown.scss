@@ -1,0 +1,43 @@
+@use '../colors';
+
+// Dropdown item colors
+$dropdown-item-color: var(--theme-default-text-color);
+$dropdown-item-bg: inherit;
+$dropdown-item-bg-hover: colors.$brand-100;
+$dropdown-item-color-hover: var(--theme-primary-darker);
+
+$dropdown-item-empty-color: var(--theme-grey-light);
+$dropdown-item-new-color: var(--theme-grey-light);
+
+$dropdown-item-even-bg: colors.$gray-50;
+$dropdown-item-highlight-bg: var(--theme-grey-lightest);
+
+$dropdown-item-selected-icon-color: var(--theme-primary);
+$dropdown-item-selected-bg: colors.$brand-50;
+$dropdown-item-selected-color: var(--theme-primary-darker);
+$dropdown-item-selected-bg-hover: colors.$brand-100;
+$dropdown-item-selected-color-hover: var(--theme-primary-darker);
+
+$dropdown-item-danger-icon-color: var(--theme-white);
+$dropdown-item-danger-bg: var(--theme-danger-light);
+$dropdown-item-danger-color: var(--theme-white);
+$dropdown-item-danger-bg-hover: var(--theme-danger);
+$dropdown-item-danger-color-hover: var(--theme-white);
+
+$dropdown-item-danger-selected-icon-color: var(--theme-danger-light);
+$dropdown-item-danger-selected-bg: var(--theme-danger);
+$dropdown-item-danger-selected-color: var(--theme-white);
+$dropdown-item-danger-selected-bg-hover: var(--theme-danger-light);
+$dropdown-item-danger-selected-color-hover: var(--theme-white);
+
+$dropdown-item-success-icon-color: var(--theme-white);
+$dropdown-item-success-bg: var(--theme-success-light);
+$dropdown-item-success-color: var(--theme-white);
+$dropdown-item-success-bg-hover: var(--theme-success);
+$dropdown-item-success-color-hover: var(--theme-white);
+
+$dropdown-item-success-selected-icon-color: var(--theme-success);
+$dropdown-item-success-selected-bg: var(--theme-success);
+$dropdown-item-success-selected-color: var(--theme-white);
+$dropdown-item-success-selected-bg-hover: var(--theme-success-light);
+$dropdown-item-success-selected-color-hover: var(--theme-white);

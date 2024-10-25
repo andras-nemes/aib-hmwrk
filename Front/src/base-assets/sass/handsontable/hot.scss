@@ -1,0 +1,272 @@
+// All our HOT tables have nested span.colHeader.columnSorting elements
+// We do not want any events triggered from the outer span as it is just
+// default container created by the HOT itself.
+.aibidia-hot > .handsontable thead th {
+    // We need to align vertically to bottom, as firefox does not play nicely with 100% height
+    vertical-align: bottom;
+
+    > .relative {
+        display: inline-table;
+        width: 100%;
+        height: 100%;
+
+        > span.colHeader.columnSorting {
+            pointer-events: none;
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+            height: 100%;
+
+            .outer-colHeader > span {
+                pointer-events: none;
+            }
+
+            .outer-colHeader > span.colHeader.columnSorting,
+            .hot-filter__controls_wrapper,
+            .hot-header-action {
+                pointer-events: auto;
+            }
+
+            span.colHeader.columnSorting + .hot-header-action__wrapper,
+            .outer-colHeader + .hot-header-action {
+                margin-left: 0.325em;
+            }
+
+            > .hot-filter__header_wrapper {
+                display: flex;
+                align-self: center;
+                align-items: center;
+                flex-grow: 1;
+                padding-top: 3px;
+                padding-bottom: 3px;
+            }
+
+            .hot-header-action__wrapper {
+                align-self: center;
+            }
+
+            .hot-header-action {
+                align-self: center;
+            }
+
+            .outer-colHeader {
+                display: flex;
+                white-space: initial;
+                text-align: center;
+                justify-content: center;
+            }
+
+            /** Hot default style involves underlining all text in header. Disable that, and enable text decoration in just the title */
+            &:hover {
+                text-decoration: none;
+            }
+
+            .outer-colHeader:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.aibidia-hot > .handsontable tbody th {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.aibidia-hot {
+    > .handsontable {
+        // Override default Handsontable header font-weight. (default is normal)
+        th {
+            font-weight: bold;
+        }
+
+        // Default Table Cell style
+        td {
+            vertical-align: middle;
+            background-color: inherit;
+            position: relative;
+
+            // Disabled Table cell
+            // .hot-disabled is a custom class used as to visually mark cell as a disabled
+            &.hot-disabled {
+                cursor: not-allowed;
+            }
+        }
+
+        th,
+        td {
+            border-right-color: theme.$table-cell-border-color;
+            border-bottom-color: theme.$table-cell-border-color;
+        }
+
+        tbody {
+            // Default Table Header style on body
+            th {
+                // Row number indicator
+                .rowHeader {
+                    align-self: center;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        tbody {
+            // Override default Handsontable .htNoWrap class styles.
+            // Default text-overflow is clip.
+            td.htNoWrap {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            td.hot-disabled {
+                cursor: not-allowed;
+            }
+        }
+
+        // Don't show where HOT wants to show the sorting
+        span.colHeader.columnSorting::before {
+            visibility: hidden;
+        }
+
+        // Show after title in the column header
+        span.colHeader.columnSorting {
+            .outer-colHeader > span.colHeader.columnSorting.sortAction::before {
+                top: initial;
+                margin-top: initial;
+                padding-left: initial;
+                position: initial;
+                right: initial;
+                content: '';
+                height: initial;
+                width: initial;
+            }
+
+            .outer-colHeader > span.colHeader.columnSorting.sortAction::after {
+                // FontAwesome icon styles
+                font-family: theme.$default-icon-font-family;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+
+                content: '';
+
+                text-decoration: none !important;
+            }
+
+            &.descending .outer-colHeader > span.colHeader.columnSorting.sortAction::after {
+                // Up arrow
+                content: ' \f30c';
+            }
+
+            &.ascending .outer-colHeader > span.colHeader.columnSorting.sortAction::after {
+                // Down arrow
+                content: ' \f309';
+            }
+        }
+
+        // Set selection corner higher z-index (default 11) so the corner stays visible when cell hover element is visible.
+        .wtBorder.corner {
+            &.area,
+            &.current {
+                z-index: 12;
+            }
+        }
+    }
+
+    .hot-filter__controls_wrapper {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: center;
+        height: 2.25em;
+        margin-bottom: 2px;
+        margin-right: 3px;
+        margin-left: 3px;
+
+        input.hot-filter__text-input,
+        input.hot-filter__range-input {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -box-sizing: border-box;
+            box-sizing: border-box;
+            font-size: 0.75rem;
+            line-height: 1.5;
+            min-height: initial;
+            outline: none;
+            width: 100%;
+            min-width: 0;
+            padding-left: 5px;
+        }
+
+        input.hot-filter__range-input:not(:only-child) {
+            border-right: none;
+        }
+
+        input.hot-filter__range-input[type='number'],
+        input.hot-filter__range-input[type='date'] {
+            -moz-appearance: textfield;
+            // Hide spinner input for numeric fields
+            &::-webkit-inner-spin-button {
+                display: none;
+            }
+        }
+
+        // Don't show double border between min-max filters
+        > .hot-filter__control:first-of-type {
+            &:not(:hover) > .hot-filter__icon-container:last-child {
+                border-right-color: transparent;
+            }
+        }
+
+        > .hot-filter__control:first-of-type {
+            &:not(:hover) > input {
+                border-right-color: transparent;
+            }
+        }
+
+        // Display filter controls as flex
+        &.hot-filter__control,
+        .hot-filter__control {
+            display: inline-flex;
+            flex-direction: row;
+        }
+
+        .hot-filter__control {
+            flex-grow: 1; // Expand the column filter to full column width.
+        }
+
+        .hot-filter__icon-container {
+            position: relative;
+            display: inline-flex;
+            flex-direction: row;
+            flex-grow: 1;
+            flex-shrink: 1;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+
+            max-width: 27px;
+            padding-right: 6px;
+
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        &.active-filter-input {
+            outline: none;
+            border: 1px solid transparent;
+
+            margin-left: 0;
+            height: calc(2.25em - 2px);
+
+            > input {
+                border: none;
+                outline: none;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+        }
+    }
+}

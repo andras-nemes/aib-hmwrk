@@ -1,0 +1,51 @@
+// Dark overrides for the theme
+// NOTE: this is only a sample to showcase dark/light theme switching,
+// and not intended to be final form.
+
+$card-bg: #131313;
+
+$default-bg-color: #131313;
+$default-bg-color-darker: #000;
+$default-bg-color-hover: var(--theme-primary-lightest);
+$default-border-color: #dbdbdb;
+$default-border-color-dark: #cccccc;
+$default-text-color: #868d9e;
+$default-text-color-hover: #4a505e;
+
+$default-link-color: var(--theme-primary);
+$default-link-color-hover: var(--theme-primary-light);
+
+$control-dropdown-color: var(--theme-grey-light);
+$control-dropdown-color-hover: var(--theme-grey-light);
+$control-bg: var(--theme-grey-darker);
+$control-color: var(--theme-default-text-color);
+$control-box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
+$control-border: 1px solid hsla(224, 38%, 64%, 0.333);
+$control-border-color-hover: #e0e5ed;
+$control-border-color-focus: var(--theme-primary);
+$control-box-shadow-focus: 0 0 0 0.125em rgba(32, 156, 238, 0.12);
+
+$control-border-color-invalid: var(--theme-danger);
+$control-box-shadow-invalid-focus: 0 0 0 0.125em rgba(238, 80, 32, 0.12);
+
+$control-bg-disabled: #dbdbdb;
+$control-color-disabled: initial;
+$control-border-color-disabled: #dbdbdb;
+
+// Toggle icons ON, checkbox Checked
+$control-bg-active: var(--theme-success);
+$control-bg-active-hover: var(--theme-success-light);
+
+// Toggle icons OFF
+$control-bg-inactive: var(--theme-primary);
+$control-bg-inactive-hover: var(--theme-primary-light);
+
+// Tabs bar
+$tabs-tab-color: var(--theme-default-text-color);
+$tabs-tab-color-active: var(--theme-white);
+$tabs-tab-color-hover: var(--theme-default-text-color);
+$tabs-tab-color-active-hover: var(--theme-white);
+$tabs-tab-bg: #3a3b3e;
+$tabs-tab-bg-active: var(--theme-primary);
+$tabs-tab-bg-hover: #525357;
+$tabs-tab-bg-active-hover: var(--theme-primary-light);

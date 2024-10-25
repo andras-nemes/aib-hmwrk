@@ -1,0 +1,14 @@
+@use 'colors';
+
+// Fullscreen background image and colors
+$fullscreen-bg-light: #80015c; // Light background color used in gradients
+$fullscreen-bg-dark: colors.$primary-darkest; // Dark background color used in gradients
+$fullscreen-card-bg: rgba(var(--theme-default-text-color-rgb), 0.502);
+$fullscreen-filter: hue-rotate(-20deg) brightness(1.8) saturate(0.4);
+
+$fullscreen-title-font-size: 2rem;
+$fullscreen-slogan-font-size: 3rem;
+$fullscreen-description-font-size: 1.5rem;
+$fullscreen-logo-height: 5rem;
+$fullscreen-logo-color: var(--theme-black);
+$fullscreen-logo-color-invert: var(--theme-white);

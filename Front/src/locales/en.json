@@ -1,0 +1,26 @@
+{
+    "common": {
+        "solution": "Homework"
+    },
+    "components": {
+    },
+    "data-object": {
+    },
+    "errors": {
+    },
+    "modals": {
+    },
+    "views": {
+        "general": {
+            "introduction": {
+                "description": "#### Homework Assignment\nThank you for your interest in applying for a developer position at Aibidia.\n\n#### Scenario\nWe at Aibidia just launched our recent solution, Careers application, which allows users to submit CV's to us in a very clear and fun way. Unfortunately marketing already launched the solution, so it's your task to make some 'key features' to it. \n\nThe code feels quite similar to our current technology stack, so it is also a chance for you to get familiar in our structure.\n\n #### Assignment F: (for applications in frontend or fullstack positions)\nYour homework is to use the VueRouter endpoint `HTTP GET resume/all` and implement your (fictional or actual) resume (CV) as you see fit. \n\n The data being returned from API is very simple at the moment. You can either mock the response on UI side (if you are only working with the front end part) or add more meaningful data to your API. \n\nWe pay attention to the following things:\n\n- How well you adjust your coding style to match ours.\n\n- What components you create and how they are created.\n\n- We look at the quality of your comments and typescripted components.\n\n- Looks are secondary to good DOM structure and clean CSS code.\n\n- Write at least one test case, so that all test cases pass.\n\n- If you can't complete the task, that is fine. In this case document your work, progress and how you would continue. \n\n #### Assignment B: (for applications in backend or fullstack positions)\n\n Front-end developer is trying to use endpoint `HTTP GET resume/all` to get list of resumes from API. The response is returning very simple mock data at moment.\n\n **Task:** Your task is to fix the API endpoint by working mainly on the design of the application and data access layers, and return a proper set of resumes stored in SQL database. You may want to setup local SQLServer to host database with appropriate Resumes-table, and include some dummy data for demonstration purposes.\n\n We pay attention to the following things:\n\n - How you choose to fix the issue\n\n- What classes you create and how they are created.\n\n - We look at the quality of your comments.\n\n - Looks are secondary to good DOM structure and clean CSS code.\n\n - SQL script to insert data into SQLServer.\n\n - If you can't complete the task, that is fine. In this case document your work, progress and how you would continue. \n\n #### Once you have finished the tasks (both backend end and/or front end as appropriate) \n\n We would like to hear your opinion on:\n- Implementing authentication\n\n - Implementing tests\n\n - Solution architecture\n\n - How this would be deployed\n\n - Improving any part of the solution\n\n You do not have to do any of these, but you should prepare some notes.",
+                "title": "Introduction"
+            },
+            "title": "General"
+        },
+        "solutions": {
+            "title": "Solutions"
+        },
+        "title": "Homework"
+    }
+}

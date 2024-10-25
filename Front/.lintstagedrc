@@ -1,0 +1,16 @@
+{
+    "*.vue": [
+      "eslint"
+    ],
+    "*.js": [
+      "eslint"
+    ],
+    "*.ts?(.vue)": [
+      "eslint"
+    ],
+    "*.html": [
+      "eslint",
+      "prettier --write"
+    ],
+    "*.scss": "prettier --write"
+}

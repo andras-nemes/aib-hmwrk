@@ -1,0 +1,127 @@
+// Brand primitives
+$brand-25: #fcf8ff;
+$brand-50: #fbf5ff;
+$brand-100: #f7ebff;
+$brand-200: #f0ddff;
+$brand-300: #e2bbff;
+$brand-400: #d59eff;
+$brand-500: #cc88ff;
+$brand-600: #925bbc;
+$brand-700: #875ba9;
+$brand-800: #62417c;
+$brand-900: #442d55;
+$brand-950: #352343;
+
+// Gray primitives
+$gray-25: #fcfcfc;
+$gray-50: #f9f9f9;
+$gray-100: #f5f5f5;
+$gray-200: #ededed;
+$gray-300: #dddddd;
+$gray-400: #a3a3a3;
+$gray-500: #737373;
+$gray-600: #4d4d4d;
+$gray-700: #363636;
+$gray-800: #262626;
+$gray-900: #1a1a1a;
+$gray-950: #0f0f0f;
+
+// Accent primitives
+$accent-25: #fffcfa;
+$accent-50: #fffaf7;
+$accent-100: #fff2eb;
+$accent-200: #fde8de;
+$accent-300: #fdcfb9;
+$accent-400: #ffac86;
+$accent-500: #ff9661;
+$accent-600: #fc762c;
+$accent-700: #fe5b00;
+$accent-800: #a9491d;
+$accent-900: #55250e;
+$accent-950: #3d1b0a;
+
+// Error primitives
+$error-25: #fffbfa;
+$error-50: #fef3f2;
+$error-100: #fee4e2;
+$error-200: #fecdca;
+$error-300: #fda29b;
+$error-400: #f97066;
+$error-500: #f04438;
+$error-600: #d92d20;
+$error-700: #b42318;
+$error-800: #912018;
+$error-900: #7a271a;
+$error-950: #55160c;
+
+// Warning primitives
+$warning-25: #fffcf5;
+$warning-50: #fffaeb;
+$warning-100: #fef0c7;
+$warning-200: #fedf89;
+$warning-300: #fec84b;
+$warning-400: #fdb022;
+$warning-500: #f79009;
+$warning-600: #dc6803;
+$warning-700: #b54708;
+$warning-800: #93370d;
+$warning-900: #7a2e0e;
+$warning-950: #4e1d09;
+
+// Success primitives
+$success-25: #f6fef9;
+$success-50: #ecfdf3;
+$success-100: #dcfae6;
+$success-200: #abefc6;
+$success-300: #75e0a7;
+$success-400: #47cd89;
+$success-500: #17b26a;
+$success-600: #079455;
+$success-700: #067647;
+$success-800: #085d3a;
+$success-900: #074d31;
+$success-950: #053321;
+
+// Nine shades of gray
+$white: #fff;
+$white-darker: #fff;
+$grey: $gray-700;
+$grey-light: $gray-500;
+$grey-lighter: $gray-200;
+$grey-lightest: $gray-100;
+$grey-darker: $gray-800;
+$grey-darkest: $gray-900;
+$black: #000;
+
+// Primary brand color
+$primary-lightest: $brand-50;
+$primary-lighter: $brand-300;
+$primary-light: $brand-500;
+$primary: $brand-600;
+$primary-dark: $brand-700;
+$primary-darker: $brand-800;
+$primary-darkest: $brand-900;
+
+// Warning brand color
+$warning: $warning-600;
+$warning-light: $warning-500;
+$warning-dark: $warning-700;
+
+// Danger brand color
+$danger: $error-600;
+$danger-light: $error-500;
+$danger-dark: $error-700;
+
+// Success brand color
+$success: $success-600;
+$success-light: $success-500;
+$success-dark: $success-700;
+
+// Info brand color
+$info: #cfe0f0; // hsl(209, 52%, 88%);
+$info-light: lighten($info, 10%);
+$info-dark: darken($info, 10%);
+
+// Gradients
+$gradient-bg: linear-gradient(90deg, #fdfaff 0%, #fff9f6 100%);
+$gradient-border: linear-gradient(90deg, #f0ddff 0%, #fde8de 100%);

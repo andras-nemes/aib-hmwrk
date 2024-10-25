@@ -1,0 +1,103 @@
+@use '../colors';
+@use '../shadows';
+
+// Button default
+$button-default-border: 1px solid colors.$gray-300;
+$button-default-bg: var(--theme-white);
+$button-default-color: var(--theme-grey);
+
+$button-default-bg-active: colors.$gray-100;
+$button-default-border-color-active: colors.$gray-300;
+$button-default-color-active: colors.$gray-800;
+
+$button-default-bg-hover: colors.$gray-50;
+$button-default-border-color-hover: colors.$gray-300;
+$button-default-color-hover: colors.$gray-800;
+
+$button-default-bg-focus: var(--theme-white);
+$button-default-border-color-focus: colors.$gray-300;
+$button-default-color-focus: var(--theme-grey);
+
+$button-default-bg-disabled: var(--theme-white);
+$button-default-border-color-disabled: var(--theme-grey-lighter);
+$button-default-color-disabled: colors.$gray-400;
+
+$button-default-box-shadow-focus: shadows.$ring-gray-shadow-xs;
+$button-default-loading-color: var(--theme-grey-lighter);
+
+// Button primary
+$button-primary-border: 1px solid transparent;
+$button-primary-bg: var(--theme-primary-darker);
+$button-primary-color: var(--theme-white);
+
+$button-primary-bg-active: var(--theme-primary-dark);
+$button-primary-border-color-active: transparent;
+$button-primary-color-active: var(--theme-white);
+
+$button-primary-bg-hover: var(--theme-primary-dark);
+$button-primary-border-color-hover: transparent;
+$button-primary-color-hover: var(--theme-white);
+
+$button-primary-bg-focus: var(--theme-primary-darker);
+$button-primary-border-color-focus: transparent;
+$button-primary-color-focus: var(--theme-white);
+
+$button-primary-bg-disabled: var(--theme-grey-lighter);
+$button-primary-border-color-disabled: transparent;
+$button-primary-color-disabled: colors.$gray-400;
+
+$button-primary-box-shadow-focus: shadows.$ring-brand-shadow-xs;
+$button-primary-loading-color: inherit;
+
+// Button danger
+$button-danger-border: 1px solid colors.$error-300;
+$button-danger-bg: var(--theme-danger);
+$button-danger-color: var(--theme-white);
+
+$button-danger-bg-active: var(--theme-danger-dark);
+$button-danger-border-color-active: transparent;
+$button-danger-color-active: var(--theme-white);
+
+$button-danger-bg-hover: var(--theme-danger-dark);
+$button-danger-border-color-hover: transparent;
+$button-danger-color-hover: var(--theme-white);
+
+$button-danger-bg-focus: var(--theme-danger-dark);
+$button-danger-border-color-focus: transparent;
+$button-danger-color-focus: var(--theme-white);
+
+$button-danger-bg-disabled: var(--theme-danger);
+$button-danger-border-color-disabled: transparent;
+$button-danger-color-disabled: var(--theme-white);
+
+$button-outlined-danger-border: 1px solid colors.$error-300;
+$button-outlined-danger-bg: var(--theme-white);
+$button-outlined-danger-color: var(--theme-danger-dark);
+$button-outlined-danger-bg-hover: colors.$error-50;
+
+$button-danger-box-shadow-focus: shadows.$ring-error-shadow-xs;
+$button-danger-loading-color: inherit;
+
+// Button success
+$button-success-border: 1px solid transparent;
+$button-success-bg: var(--theme-success);
+$button-success-color: var(--theme-white);
+
+$button-success-bg-active: var(--theme-success-dark);
+$button-success-border-color-active: transparent;
+$button-success-color-active: var(--theme-white);
+
+$button-success-bg-hover: var(--theme-success-dark);
+$button-success-border-color-hover: transparent;
+$button-success-color-hover: var(--theme-white);
+
+$button-success-bg-focus: var(--theme-success-dark);
+$button-success-border-color-focus: transparent;
+$button-success-color-focus: var(--theme-white);
+
+$button-success-bg-disabled: var(--theme-success);
+$button-success-border-color-disabled: transparent;
+$button-success-color-disabled: var(--theme-white);
+
+$button-success-box-shadow-focus: shadows.$ring-gray-shadow-xs;
+$button-success-loading-color: var(--theme-white);

@@ -1,0 +1,104 @@
+@use '../defaults';
+@use '../colors';
+
+// Table (HOT) theme colors.
+
+$table-header-bg: var(--theme-default-bg-color-darker);
+$table-header-color: colors.$gray-600;
+$table-row-header-bg: colors.$gray-600;
+
+// Set the row alternative color scheme. Note that can't use CSS variables here because we mix the dimmed color
+$table-row-bg: colors.$white;
+$table-row-bg-hover: colors.$primary-lightest;
+$table-row-bg-hover-gradient: colors.$gradient-bg;
+$table-row-even-bg: colors.$gray-25;
+$table-row-even-bg-hover: colors.$primary-lightest;
+
+$table-cell-color: var(--theme-grey-darkest);
+$table-cell-bg: inherit;
+$table-cell-bg-hover: colors.$brand-50;
+$table-cell-box-shadow-hover: 0 -0.5px 0 1px rgba(var(--theme-primary-light), 0.4) inset;
+$table-cell-color-hover: var(--theme-grey-darkest);
+$table-cell-border-color: var(--theme-grey-lighter);
+
+$table-cell-icon-color: colors.$gray-600;
+$table-cell-hovered-icon-color: var(--theme-primary);
+$table-cell-hovered-icon-color-hover: var(--theme-primary-dark);
+
+$table-cell-dropdown-arrow-color: var(--theme-grey-light);
+$table-cell-dropdown-arrow-color-cellhover: var(--theme-grey-light);
+$table-cell-dropdown-arrow-color-cellhover-hover: var(--theme-grey-light);
+
+$table-cell-placeholder-color: var(--theme-grey-light);
+$table-cell-placeholder-color-hover: var(--theme-grey-light);
+
+$table-cell-placeholder-invalid-color: var(--theme-danger);
+$table-cell-placeholder-invalid-color-hover: var(--theme-danger);
+
+$table-cell-disabled-color: colors.$gray-600;
+$table-cell-disabled-bg: rgba(204, 204, 204, 0.2);
+
+// Rows that can be toggled open or collapsed
+// This value is used to dim the table cell colors
+$toggle-color: adjust-hue(colors.$primary, 0deg);
+$toggle-amount: 10%;
+
+$table-cell-toggle-bg: mix($table-row-bg, $toggle-color, $toggle-amount);
+$table-cell-toggle-even-bg: mix($table-row-even-bg, $toggle-color, $toggle-amount);
+$table-cell-toggle-bg-hover: mix($table-row-bg-hover, $toggle-color, $toggle-amount);
+$table-cell-toggle-even-bg-hover: mix($table-row-even-bg-hover, $toggle-color, $toggle-amount);
+$table-cell-toggle-color: var(--theme-white);
+$table-cell-toggle-icon-color: var(--theme-white);
+
+// Rows that are expanded from parent toggle row
+$expanded-color: adjust-hue(colors.$primary, 0deg);
+$expanded-amount: 85%;
+
+$table-cell-expanded-bg: mix($table-row-bg, $expanded-color, $expanded-amount);
+$table-cell-expanded-even-bg: mix($table-row-even-bg, $expanded-color, $expanded-amount);
+$table-cell-expanded-bg-hover: mix($table-row-bg-hover, $expanded-color, $expanded-amount);
+$table-cell-expanded-even-bg-hover: mix(
+    $table-row-even-bg-hover,
+    $expanded-color,
+    $expanded-amount
+);
+$table-cell-expanded-color: defaults.$default-text-color;
+$table-cell-expanded-icon-color: $table-cell-icon-color;
+
+$table-cell-dimmed-color: colors.$gray-600;
+$table-cell-dimmed-bg: colors.$gray-100;
+$table-cell-dimmed-border: 1px solid colors.$gray-300;
+$table-cell-dimmed-even-bg: colors.$gray-200;
+
+$table-cell-dimmed-color-hover: inherit;
+$table-cell-dimmed-bg-hover: colors.$gray-300;
+$table-cell-dimmed-even-bg-hover: colors.$gray-300;
+
+$table-cell-highlight-bg: mix($table-row-bg, $toggle-color, $toggle-amount);
+$table-cell-highlight-color: var(--theme-white);
+
+$table-cell-summary-bg: var(--theme-primary-lightest);
+$table-cell-summary-color: var(--theme-primary-darkest);
+
+$table-cell-section-bg: mix($table-row-bg, $expanded-color, $expanded-amount);
+$table-cell-section-color: inherit;
+
+$table-cell-selected-color: var(--theme-primary-lightest);
+$table-cell-selected-border-color: var(--theme-primary);
+
+$table-header-selected-bg: var(--theme-primary);
+
+$table-header-highlighted-bg: colors.$primary-lightest;
+
+$table-header-primary-color: var(--theme-primary);
+
+$table-cell-invalid-bg: colors.$error-100;
+$table-cell-invalid-bg-hover: colors.$error-200;
+$table-cell-invalid-color: var(--theme-danger);
+$table-cell-invalid-color-hover: var(--theme-danger);
+$table-cell-invalid-box-shadow: none;
+
+$table-input-box-shadow: 0 0 0 2px var(--theme-primary) inset;
+
+$table-cell-text-editor-filter: initial;
+$table-cell-text-editor-border: 1px solid colors.$primary;

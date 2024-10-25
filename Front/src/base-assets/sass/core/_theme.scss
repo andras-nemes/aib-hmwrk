@@ -1,0 +1,956 @@
+// Use default Aibidia theme as "default"
+@use '../themes/aibidia' as default;
+@use '../themes/aibidia/dark' as dark;
+@forward 'modes';
+
+// Convert hex value to R G B value. Useful to use color + opacity in CSS variables
+// Inspired by https://codeburst.io/magic-of-css-sass-variables-b07ae8c1b775
+@function hexToRGB($hex) {
+    @return red($hex), green($hex), blue($hex);
+}
+
+// Add all variables that can be themed to root
+@mixin theme {
+    :root,
+    [data-color-mode='light'] {
+        --theme-white: #{default.$white};
+        --theme-white-rgb: #{hexToRGB(default.$white)};
+        --theme-grey: #{default.$grey};
+        --theme-grey-rgb: #{hexToRGB(default.$grey)};
+        --theme-grey-light: #{default.$grey-light};
+        --theme-grey-light-rgb: #{hexToRGB(default.$grey-light)};
+        --theme-grey-lighter: #{default.$grey-lighter};
+        --theme-grey-lighter-rgb: #{hexToRGB(default.$grey-lighter)};
+        --theme-grey-lightest: #{default.$grey-lightest};
+        --theme-grey-lightest-rgb: #{hexToRGB(default.$grey-lightest)};
+        --theme-grey-darker: #{default.$grey-darker};
+        --theme-grey-darker-rgb: #{hexToRGB(default.$grey-darker)};
+        --theme-grey-darkest: #{default.$grey-darkest};
+        --theme-grey-darkest-rgb: #{hexToRGB(default.$grey-darkest)};
+        --theme-black: #{default.$black};
+        --theme-black-rgb: #{hexToRGB(default.$black)};
+
+        --theme-primary: #{default.$primary};
+        --theme-primary-rgb: #{hexToRGB(default.$primary)};
+        --theme-primary-light: #{default.$primary-light};
+        --theme-primary-light-rgb: #{hexToRGB(default.$primary-light)};
+        --theme-primary-lighter: #{default.$primary-lighter};
+        --theme-primary-lighter-rgb: #{hexToRGB(default.$primary-lighter)};
+        --theme-primary-lightest: #{default.$primary-lightest};
+        --theme-primary-lightest-rgb: #{hexToRGB(default.$primary-lightest)};
+
+        --theme-primary-dark: #{default.$primary-dark};
+        --theme-primary-dark-rgb: #{hexToRGB(default.$primary-dark)};
+        --theme-primary-darker: #{default.$primary-darker};
+        --theme-primary-darker-rgb: #{hexToRGB(default.$primary-darker)};
+        --theme-primary-darkest: #{default.$primary-darkest};
+        --theme-primary-darkest-rgb: #{hexToRGB(default.$primary-darkest)};
+
+        --theme-warning: #{default.$warning};
+        --theme-warning-rgb: #{hexToRGB(default.$warning)};
+        --theme-warning-light: #{default.$warning-light};
+        --theme-warning-light-rgb: #{hexToRGB(default.$warning-light)};
+        --theme-warning-dark: #{default.$warning-dark};
+        --theme-warning-dark-rgb: #{hexToRGB(default.$warning-dark)};
+
+        --theme-info: #{default.$info};
+        --theme-info-rgb: #{hexToRGB(default.$info)};
+        --theme-info-light: #{default.$info-light};
+        --theme-info-light-rgb: #{hexToRGB(default.$info-light)};
+        --theme-info-dark: #{default.$info-dark};
+        --theme-info-dark-rgb: #{hexToRGB(default.$info-dark)};
+
+        --theme-danger: #{default.$danger};
+        --theme-danger-rgb: #{hexToRGB(default.$danger)};
+        --theme-danger-light: #{default.$danger-light};
+        --theme-danger-light-rgb: #{hexToRGB(default.$danger-light)};
+        --theme-danger-dark: #{default.$danger-dark};
+        --theme-danger-dark-rgb: #{hexToRGB(default.$danger-dark)};
+        --theme-success: #{default.$success};
+        --theme-success-rgb: #{hexToRGB(default.$success)};
+        --theme-success-light: #{default.$success-light};
+        --theme-success-light-rgb: #{hexToRGB(default.$success-light)};
+        --theme-success-dark: #{default.$success-dark};
+        --theme-success-dark-rgb: #{hexToRGB(default.$success-dark)};
+
+        --theme-fullscreen-bg-color: #{default.$fullscreen-bg-dark};
+        // Currently unused in favor of SVG background image
+        --theme-fullscreen-bg-gradient: #{default.$background-gradient};
+        // Fullscreen default text color
+        --theme-fullscreen-text-color: #{default.$white};
+        --theme-fullscreen-filter: #{default.$fullscreen-filter};
+        --theme-fullscreen-title-font-size: #{default.$fullscreen-title-font-size};
+        --theme-fullscreen-slogan-font-size: #{default.$fullscreen-slogan-font-size};
+        --theme-fullscreen-description-font-size: #{default.$fullscreen-description-font-size};
+        --theme-fullscreen-card-bg: #{default.$fullscreen-card-bg};
+        --theme-fullscreen-logo-height: #{default.$fullscreen-logo-height};
+        --theme-fullscreen-logo-color: #{default.$fullscreen-logo-color};
+        --theme-fullscreen-logo-color-invert: #{default.$fullscreen-logo-color-invert};
+
+        --theme-overlay-bg: #{default.$overlay-bg};
+        --theme-overlay-color: #{default.$overlay-color};
+
+        --theme-topbar-bg: #{default.$topbar-bg};
+        --theme-topbar-height: #{default.$topbar-height};
+
+        --theme-page-control-user-logo-color: #{default.$page-control-user-logo-color};
+        --theme-page-control-user-logo-color-hover: #{default.$page-control-user-logo-color-hover};
+        --theme-page-breadcrumb-icon-color: #{default.$page-breadcrumb-icon-color};
+
+        --theme-close-button-icon-color: #{default.$close-button-icon-color};
+
+        // Sidemenu
+        // Sidemenu width in pixels when in full
+        --theme-sidemenu-width: #{default.$sidemenu-width};
+        --theme-sidemenu-width-collapsed: #{default.$sidemenu-width-collapsed};
+        --theme-sidemenu-background-filter: #{default.$sidemenu-background-filter};
+        --theme-sidemenu-background: #{default.$sidemenu-background};
+        --theme-sidemenu-logo-color: #{default.$sidemenu-logo-color};
+        --theme-sidemenu-logo-color-collapsed: #{default.$sidemenu-logo-color-collapsed};
+        --theme-sidemenu-logo-section-height: #{default.$sidemenu-logo-section-height};
+        --theme-sidemenu-logo-height: #{default.$sidemenu-logo-height};
+        --theme-sidemenu-logo-small-height: #{default.$sidemenu-logo-small-height};
+        --theme-sidemenu-logo-font-size: #{default.$sidemenu-logo-font-size};
+        --theme-sidemenu-logo-small-font-size: #{default.$sidemenu-logo-small-font-size};
+        --theme-sidemenu-section-header-bg: #{default.$sidemenu-section-header-bg};
+        --theme-sidemenu-section-header-bg-hover: #{default.$sidemenu-section-header-bg-hover};
+        --theme-sidemenu-section-header-color: #{default.$sidemenu-section-header-color};
+        --theme-sidemenu-section-header-border-radius: #{default.$sidemenu-section-header-border-radius};
+        --theme-sidemenu-sticky-icon-color: #{default.$sidemenu-sticky-icon-color};
+
+        --theme-sidemenu-menuitem-color: #{default.$sidemenu-menuitem-color};
+        --theme-sidemenu-menuitem-color-active: #{default.$sidemenu-menuitem-color-active};
+        --theme-sidemenu-menuitem-color-hover: #{default.$sidemenu-menuitem-color-hover};
+        --theme-sidemenu-menuitem-color-active-hover: #{default.$sidemenu-menuitem-color-active-hover};
+
+        --theme-sidemenu-menuitem-bg: #{default.$sidemenu-menuitem-bg};
+        --theme-sidemenu-menuitem-bg-active: #{default.$sidemenu-menuitem-bg-active};
+        --theme-sidemenu-menuitem-bg-hover: #{default.$sidemenu-menuitem-bg-hover};
+        --theme-sidemenu-menuitem-bg-active-hover: #{default.$sidemenu-menuitem-bg-active-hover};
+
+        --theme-sidemenu-menuitem-icon-color: #{default.$sidemenu-menuitem-icon-color};
+
+        --theme-sidemenu-width-collapsed: #{default.$sidemenu-width-collapsed};
+        --theme-sidemenu-background-filter-collapsed: #{default.$sidemenu-background-filter-collapsed};
+        --theme-sidemenu-section-header-bg-collapsed: #{default.$sidemenu-section-header-bg-collapsed};
+
+        --theme-sidemenu-submenu-border-radius: #{default.$sidemenu-submenu-border-radius};
+        --theme-sidemenu-submenu-bg: #{default.$sidemenu-submenu-bg};
+
+        --theme-sidemenu-submenu-menuitem-color: #{default.$sidemenu-submenu-menuitem-color};
+        --theme-sidemenu-submenu-menuitem-color-active: #{default.$sidemenu-submenu-menuitem-color-active};
+        --theme-sidemenu-submenu-menuitem-color-hover: #{default.$sidemenu-submenu-menuitem-color-hover};
+        --theme-sidemenu-submenu-menuitem-color-active-hover: #{default.$sidemenu-submenu-menuitem-color-active-hover};
+
+        --theme-sidemenu-submenu-menuitem-bg: #{default.$sidemenu-submenu-menuitem-bg};
+        --theme-sidemenu-submenu-menuitem-bg-active: #{default.$sidemenu-submenu-menuitem-bg-active};
+        --theme-sidemenu-submenu-menuitem-bg-hover: #{default.$sidemenu-submenu-menuitem-bg-hover};
+        --theme-sidemenu-submenu-menuitem-bg-active-hover: #{default.$sidemenu-submenu-menuitem-bg-active-hover};
+
+        --theme-tabs-tab-color: #{default.$tabs-tab-color};
+        --theme-tabs-tab-color-active: #{default.$tabs-tab-color-active};
+        --theme-tabs-tab-color-hover: #{default.$tabs-tab-color-hover};
+        --theme-tabs-tab-color-active-hover: #{default.$tabs-tab-color-active-hover};
+
+        --theme-tabs-tab-bg: #{default.$tabs-tab-bg};
+        --theme-tabs-tab-bg-active: #{default.$tabs-tab-bg-active};
+        --theme-tabs-tab-bg-hover: #{default.$tabs-tab-bg-hover};
+        --theme-tabs-tab-bg-active-hover: #{default.$tabs-tab-bg-active-hover};
+
+        --theme-card-bg: #{default.$card-bg};
+        --theme-card-header-bg: #{default.$card-header-bg};
+        --theme-card-header-bg-light: #{default.$card-header-bg-light};
+        --theme-card-header-title-color: #{default.$card-header-title-color};
+        --theme-card-header-title-font-size: #{default.$card-header-title-font-size};
+        --theme-card-header-subtitle-color: #{default.$card-header-subtitle-color};
+        --theme-card-header-subtitle-font-size: #{default.$card-header-subtitle-font-size};
+        --theme-card-header-counter-color: #{default.$card-header-counter-color};
+        --theme-card-header-counter-font-size: #{default.$card-header-counter-font-size};
+        --theme-card-border-radius: #{default.$card-border-radius};
+
+        --theme-modal-bg: #{default.$modal-bg};
+        --theme-modal-overlay-bg: #{default.$modal-overlay-bg};
+        --theme-modal-header-bg: #{default.$modal-header-bg};
+        --theme-modal-header-title-color: #{default.$modal-header-title-color};
+        --theme-modal-header-title-font-size: #{default.$modal-header-title-font-size};
+        --theme-modal-header-subtitle-color: #{default.$modal-header-subtitle-color};
+        --theme-modal-header-subtitle-font-size: #{default.$modal-header-subtitle-font-size};
+        --theme-modal-header-counter-color: #{default.$modal-header-counter-color};
+        --theme-modal-header-counter-font-size: #{default.$modal-header-counter-font-size};
+        --theme-modal-border-radius: #{default.$modal-border-radius};
+
+        --theme-default-padding: #{default.$default-padding};
+        --theme-default-content-padding: #{default.$default-content-padding};
+
+        // Default font settings
+        --theme-default-font-family: #{default.$default-font-family};
+        --theme-default-font-size: #{default.$default-font-size};
+        --theme-default-icon-font-family: #{default.$default-icon-font-family};
+
+        // Default colors
+        --theme-default-bg-color: #{default.$default-bg-color};
+        --theme-default-bg-color-darker: #{default.$default-bg-color-darker};
+        --theme-default-bg-color-hover: #{default.$default-bg-color-hover};
+        --theme-default-border-color: #{default.$default-border-color};
+        --theme-default-border-color-dark: #{default.$default-border-color-dark};
+        --theme-default-text-color: #{default.$default-text-color};
+        --theme-default-text-color-hover: #{default.$default-text-color-hover};
+
+        --theme-default-link-color: #{default.$default-link-color};
+        --theme-default-link-color-hover: #{default.$default-link-color-hover};
+
+        // Notification colors
+        --theme-notification-icon-primary: #{default.$notification-icon-primary};
+        --theme-notification-icon-danger: #{default.$notification-icon-danger};
+        --theme-notification-icon-success: #{default.$notification-icon-success};
+
+        // Dropdown item colors
+        --theme-dropdown-item-bg: #{default.$dropdown-item-bg};
+        --theme-dropdown-item-color: #{default.$dropdown-item-color};
+        --theme-dropdown-item-bg-hover: #{default.$dropdown-item-bg-hover};
+        --theme-dropdown-item-color-hover: #{default.$dropdown-item-color-hover};
+
+        --theme-dropdown-item-empty-color: #{default.$dropdown-item-empty-color};
+        --theme-dropdown-item-new-color: #{default.$dropdown-item-new-color};
+
+        --theme-dropdown-item-even-bg: #{default.$dropdown-item-even-bg};
+        --theme-dropdown-item-highlight-bg: #{default.$dropdown-item-highlight-bg};
+
+        --theme-dropdown-item-selected-icon-color: #{default.$dropdown-item-selected-icon-color};
+        --theme-dropdown-item-selected-bg: #{default.$dropdown-item-selected-bg};
+        --theme-dropdown-item-selected-color: #{default.$dropdown-item-selected-color};
+        --theme-dropdown-item-selected-bg-hover: #{default.$dropdown-item-selected-bg-hover};
+        --theme-dropdown-item-selected-color-hover: #{default.$dropdown-item-selected-color-hover};
+
+        --theme-dropdown-item-danger-icon-color: #{default.$dropdown-item-danger-icon-color};
+        --theme-dropdown-item-danger-bg: #{default.$dropdown-item-danger-bg};
+        --theme-dropdown-item-danger-color: #{default.$dropdown-item-danger-color};
+        --theme-dropdown-item-danger-bg-hover: #{default.$dropdown-item-danger-bg-hover};
+        --theme-dropdown-item-danger-color-hover: #{default.$dropdown-item-danger-color-hover};
+
+        --theme-dropdown-item-danger-selected-icon-color: #{default.$dropdown-item-danger-selected-icon-color};
+        --theme-dropdown-item-danger-selected-bg: #{default.$dropdown-item-danger-selected-bg};
+        --theme-dropdown-item-danger-selected-color: #{default.$dropdown-item-danger-selected-color};
+        --theme-dropdown-item-danger-selected-bg-hover: #{default.$dropdown-item-danger-selected-bg-hover};
+        --theme-dropdown-item-danger-selected-color-hover: #{default.$dropdown-item-danger-selected-color-hover};
+
+        --theme-dropdown-item-success-icon-color: #{default.$dropdown-item-success-icon-color};
+        --theme-dropdown-item-success-bg: #{default.$dropdown-item-success-bg};
+        --theme-dropdown-item-success-color: #{default.$dropdown-item-success-color};
+        --theme-dropdown-item-success-bg-hover: #{default.$dropdown-item-success-bg-hover};
+        --theme-dropdown-item-success-color-hover: #{default.$dropdown-item-success-color-hover};
+
+        --theme-dropdown-item-success-selected-icon-color: #{default.$dropdown-item-success-selected-icon-color};
+        --theme-dropdown-item-success-selected-bg: #{default.$dropdown-item-success-selected-bg};
+        --theme-dropdown-item-success-selected-color: #{default.$dropdown-item-success-selected-color};
+        --theme-dropdown-item-success-selected-bg-hover: #{default.$dropdown-item-success-selected-bg-hover};
+        --theme-dropdown-item-success-selected-color-hover: #{default.$dropdown-item-success-selected-color-hover};
+
+        // Table theme
+
+        --theme-table-header-bg: #{default.$table-header-bg};
+        --theme-table-header-color: #{default.$table-header-color};
+        --theme-table-row-header-bg: #{default.$table-row-header-bg};
+        --theme-table-row-bg: #{default.$table-row-bg};
+        --theme-table-row-bg-hover: #{default.$table-row-bg-hover};
+        --theme-table-row-bg-hover-gradient: #{default.$table-row-bg-hover-gradient};
+        --theme-table-row-even-bg: #{default.$table-row-even-bg};
+        --theme-table-row-even-bg-hover: #{default.$table-row-even-bg-hover};
+
+        --theme-table-cell-toggle-bg: #{default.$table-cell-toggle-bg};
+        --theme-table-cell-toggle-color: #{default.$table-cell-toggle-color};
+        --theme-table-cell-toggle-icon-color: #{default.$table-cell-toggle-icon-color};
+        --theme-table-cell-toggle-bg-hover: #{default.$table-cell-toggle-bg-hover};
+        --theme-table-cell-toggle-even-bg: #{default.$table-cell-toggle-even-bg};
+        --theme-table-cell-toggle-even-bg-hover: #{default.$table-cell-toggle-even-bg-hover};
+
+        --theme-table-cell-expanded-bg: #{default.$table-cell-expanded-bg};
+        --theme-table-cell-expanded-color: #{default.$table-cell-expanded-color};
+        --theme-table-cell-expanded-icon-color: #{default.$table-cell-expanded-icon-color};
+        --theme-table-cell-expanded-bg-hover: #{default.$table-cell-expanded-bg-hover};
+        --theme-table-cell-expanded-even-bg: #{default.$table-cell-expanded-even-bg};
+        --theme-table-cell-expanded-even-bg-hover: #{default.$table-cell-expanded-even-bg-hover};
+
+        --theme-table-cell-color: #{default.$table-cell-color};
+        --theme-table-cell-bg: #{default.$table-cell-bg};
+        --theme-table-cell-bg-hover: #{default.$table-cell-bg-hover};
+        --theme-table-cell-color-hover: #{default.$table-cell-color-hover};
+        --theme-table-cell-border-color: #{default.$table-cell-border-color};
+        --theme-table-cell-box-shadow-hover: #{default.$table-cell-box-shadow-hover};
+
+        --theme-table-cell-icon-color: #{default.$table-cell-icon-color};
+        --theme-table-cell-hovered-icon-color: #{default.$table-cell-hovered-icon-color};
+        --theme-table-cell-hovered-icon-color-hover: #{default.$table-cell-hovered-icon-color-hover};
+
+        --theme-table-cell-dropdown-arrow-color: #{default.$table-cell-dropdown-arrow-color};
+        --theme-table-cell-dropdown-arrow-color-cellhover: #{default.$table-cell-dropdown-arrow-color-cellhover};
+        --theme-table-cell-dropdown-arrow-color-cellhover-hover: #{default.$table-cell-dropdown-arrow-color-cellhover-hover};
+
+        --theme-table-cell-disabled-color: #{default.$table-cell-disabled-color};
+        --theme-table-cell-disabled-bg: #{default.$table-cell-disabled-bg};
+
+        --theme-table-cell-dimmed-color: #{default.$table-cell-dimmed-color};
+        --theme-table-cell-dimmed-bg: #{default.$table-cell-dimmed-bg};
+        --theme-table-cell-dimmed-border: #{default.$table-cell-dimmed-border};
+        --theme-table-cell-dimmed-even-bg: #{default.$table-cell-dimmed-even-bg};
+
+        --theme-table-cell-dimmed-color-hover: #{default.$table-cell-dimmed-color-hover};
+        --theme-table-cell-dimmed-bg-hover: #{default.$table-cell-dimmed-bg-hover};
+        --theme-table-cell-dimmed-even-bg-hover: #{default.$table-cell-dimmed-even-bg-hover};
+
+        --theme-table-cell-highlight-bg: #{default.$table-cell-highlight-bg};
+        --theme-table-cell-highlight-color: #{default.$table-cell-highlight-color};
+
+        --theme-table-cell-summary-bg: #{default.$table-cell-summary-bg};
+        --theme-table-cell-summary-color: #{default.$table-cell-summary-color};
+
+        --theme-table-cell-section-bg: #{default.$table-cell-section-bg};
+        --theme-table-cell-section-color: #{default.$table-cell-section-color};
+
+        --theme-table-cell-placeholder-color: #{default.$table-cell-placeholder-color};
+        --theme-table-cell-placeholder-color-hover: #{default.$table-cell-placeholder-color-hover};
+
+        --theme-table-cell-selected-color: #{default.$table-cell-selected-color};
+        --theme-table-cell-selected-border-color: #{default.$table-cell-selected-border-color};
+
+        --theme-table-cell-text-editor-filter: #{default.$table-cell-text-editor-filter};
+        --theme-table-cell-text-editor-border: #{default.$table-cell-text-editor-border};
+
+        --theme-table-header-selected-bg: #{default.$table-header-selected-bg};
+        --theme-table-header-primary-color: #{default.$table-header-primary-color};
+
+        --theme-table-header-highlighted-bg: #{default.$table-header-highlighted-bg};
+
+        --theme-table-cell-invalid-bg: #{default.$table-cell-invalid-bg};
+        --theme-table-cell-invalid-bg-hover: #{default.$table-cell-invalid-bg-hover};
+        --theme-table-cell-invalid-color: #{default.$table-cell-invalid-color};
+        --theme-table-cell-invalid-color-hover: #{default.$table-cell-invalid-color-hover};
+        --theme-table-cell-invalid-box-shadow: #{default.$table-cell-invalid-box-shadow};
+
+        --theme-table-input-box-shadow: #{default.$table-input-box-shadow};
+
+        --theme-control-border-radius: #{default.$control-border-radius};
+        --theme-button-border-radius: #{default.$button-border-radius};
+
+        --theme-control-icon-color: #{default.$control-icon-color};
+        --theme-control-icon-color-hover: #{default.$control-icon-color-hover};
+
+        --theme-control-dropdown-color: #{default.$control-dropdown-color};
+        --theme-control-dropdown-color-hover: #{default.$control-dropdown-color-hover};
+        --theme-control-bg: #{default.$control-bg};
+        --theme-control-color: #{default.$control-color};
+        --theme-control-height: #{default.$control-height};
+        --theme-control-box-shadow: #{default.$control-box-shadow};
+        --theme-control-border: #{default.$control-border};
+
+        --theme-control-bg-disabled: #{default.$control-bg-disabled};
+        --theme-control-color-disabled: #{default.$control-color-disabled};
+        --theme-control-border-color-disabled: #{default.$control-border-color-disabled};
+
+        --theme-control-border-color-hover: #{default.$control-border-color-hover};
+        --theme-control-border-color-focus: #{default.$control-border-color-focus};
+        --theme-control-box-shadow-focus: #{default.$control-box-shadow-focus};
+
+        --theme-control-border-color-invalid: #{default.$control-border-color-invalid};
+        --theme-control-box-shadow-invalid-focus: #{default.$control-box-shadow-invalid-focus};
+
+        --theme-control-bg-active: #{default.$control-bg-active};
+        --theme-control-bg-inactive: #{default.$control-bg-inactive};
+        --theme-control-bg-active-hover: #{default.$control-bg-active-hover};
+        --theme-control-bg-inactive-hover: #{default.$control-bg-inactive-hover};
+
+        // Button default
+        --theme-button-default-border: #{default.$button-default-border};
+        --theme-button-default-bg: #{default.$button-default-bg};
+        --theme-button-default-color: #{default.$button-default-color};
+
+        --theme-button-default-bg-active: #{default.$button-default-bg-active};
+        --theme-button-default-border-color-active: #{default.$button-default-border-color-active};
+        --theme-button-default-color-active: #{default.$button-default-color-active};
+
+        --theme-button-default-bg-hover: #{default.$button-default-bg-hover};
+        --theme-button-default-border-color-hover: #{default.$button-default-border-color-hover};
+        --theme-button-default-color-hover: #{default.$button-default-color-hover};
+
+        --theme-button-default-bg-focus: #{default.$button-default-bg-focus};
+        --theme-button-default-border-color-focus: #{default.$button-default-border-color-focus};
+        --theme-button-default-color-focus: #{default.$button-default-color-focus};
+
+        --theme-button-default-bg-disabled: #{default.$button-default-bg-disabled};
+        --theme-button-default-border-color-disabled: #{default.$button-default-border-color-disabled};
+        --theme-button-default-color-disabled: #{default.$button-default-color-disabled};
+
+        --theme-button-default-box-shadow-focus: #{default.$button-default-box-shadow-focus};
+        --theme-button-default-loading-color: #{default.$button-default-loading-color};
+
+        // Button primary
+        --theme-button-primary-border: #{default.$button-primary-border};
+        --theme-button-primary-bg: #{default.$button-primary-bg};
+        --theme-button-primary-color: #{default.$button-primary-color};
+
+        --theme-button-primary-bg-active: #{default.$button-primary-bg-active};
+        --theme-button-primary-border-color-active: #{default.$button-primary-border-color-active};
+        --theme-button-primary-color-active: #{default.$button-primary-color-active};
+
+        --theme-button-primary-bg-hover: #{default.$button-primary-bg-hover};
+        --theme-button-primary-border-color-hover: #{default.$button-primary-border-color-hover};
+        --theme-button-primary-color-hover: #{default.$button-primary-color-hover};
+
+        --theme-button-primary-bg-focus: #{default.$button-primary-bg-focus};
+        --theme-button-primary-border-color-focus: #{default.$button-primary-border-color-focus};
+        --theme-button-primary-color-focus: #{default.$button-primary-color-focus};
+
+        --theme-button-primary-bg-disabled: #{default.$button-primary-bg-disabled};
+        --theme-button-primary-border-color-disabled: #{default.$button-primary-border-color-disabled};
+        --theme-button-primary-color-disabled: #{default.$button-primary-color-disabled};
+
+        --theme-button-primary-box-shadow-focus: #{default.$button-primary-box-shadow-focus};
+        --theme-button-primary-loading-color: #{default.$button-primary-loading-color};
+
+        // Button danger
+        --theme-button-danger-border: #{default.$button-danger-border};
+        --theme-button-danger-bg: #{default.$button-danger-bg};
+        --theme-button-danger-color: #{default.$button-danger-color};
+
+        --theme-button-danger-bg-active: #{default.$button-danger-bg-active};
+        --theme-button-danger-border-color-active: #{default.$button-danger-border-color-active};
+        --theme-button-danger-color-active: #{default.$button-danger-color-active};
+
+        --theme-button-danger-bg-hover: #{default.$button-danger-bg-hover};
+        --theme-button-danger-border-color-hover: #{default.$button-danger-border-color-hover};
+        --theme-button-danger-color-hover: #{default.$button-danger-color-hover};
+
+        --theme-button-danger-bg-focus: #{default.$button-danger-bg-focus};
+        --theme-button-danger-border-color-focus: #{default.$button-danger-border-color-focus};
+        --theme-button-danger-color-focus: #{default.$button-danger-color-focus};
+
+        --theme-button-danger-bg-disabled: #{default.$button-danger-bg-disabled};
+        --theme-button-danger-border-color-disabled: #{default.$button-danger-border-color-disabled};
+        --theme-button-danger-color-disabled: #{default.$button-danger-color-disabled};
+
+        --theme-button-outlined-danger-border: #{default.$button-outlined-danger-border};
+        --theme-button-outlined-danger-bg: #{default.$button-outlined-danger-bg};
+        --theme-button-outlined-danger-color: #{default.$button-outlined-danger-color};
+        --theme-button-outlined-danger-bg-hover: #{default.$button-outlined-danger-bg-hover};
+
+        --theme-button-danger-box-shadow-focus: #{default.$button-danger-box-shadow-focus};
+        --theme-button-danger-loading-color: #{default.$button-danger-loading-color};
+
+        // Button success
+        --theme-button-success-border: #{default.$button-success-border};
+        --theme-button-success-bg: #{default.$button-success-bg};
+        --theme-button-success-color: #{default.$button-success-color};
+
+        --theme-button-success-bg-active: #{default.$button-success-bg-active};
+        --theme-button-success-border-color-active: #{default.$button-success-border-color-active};
+        --theme-button-success-color-active: #{default.$button-success-color-active};
+
+        --theme-button-success-bg-hover: #{default.$button-success-bg-hover};
+        --theme-button-success-border-color-hover: #{default.$button-success-border-color-hover};
+        --theme-button-success-color-hover: #{default.$button-success-color-hover};
+
+        --theme-button-success-bg-focus: #{default.$button-success-bg-focus};
+        --theme-button-success-border-color-focus: #{default.$button-success-border-color-focus};
+        --theme-button-success-color-focus: #{default.$button-success-color-focus};
+
+        --theme-button-success-bg-disabled: #{default.$button-success-bg-disabled};
+        --theme-button-success-border-color-disabled: #{default.$button-success-border-color-disabled};
+        --theme-button-success-color-disabled: #{default.$button-success-color-disabled};
+
+        --theme-button-success-box-shadow-focus: #{default.$button-success-box-shadow-focus};
+        --theme-button-success-loading-color: #{default.$button-success-loading-color};
+
+        --theme-scrollbar-track-color: #{default.$scrollbar-track-color};
+        --theme-scrollbar-thumb-color: #{default.$scrollbar-thumb-color};
+        --theme-scrollbar-thumb-color-hover: #{default.$scrollbar-thumb-color-hover};
+        --theme-scrollbar-width: #{default.$scrollbar-width};
+        --theme-scrollbar-height: #{default.$scrollbar-height};
+    }
+
+    // Then we override all variables that can have dark or inverted mode
+
+    :root [data-color-mode='dark'] {
+        --theme-card-bg: #{dark.$card-bg};
+        // Default colors
+        --theme-default-bg-color: #{dark.$default-bg-color};
+        --theme-default-bg-color-darker: #{dark.$default-bg-color-darker};
+        --theme-default-bg-color-hover: #{dark.$default-bg-color-hover};
+        --theme-default-border-color: #{dark.$default-border-color};
+        --theme-default-border-color-dark: #{dark.$default-border-color-dark};
+        --theme-default-text-color: #{dark.$default-text-color};
+        --theme-default-text-color-hover: #{dark.$default-text-color-hover};
+        --theme-default-link-color: #{dark.$default-link-color};
+        --theme-default-link-color-hover: #{dark.$default-link-color-hover};
+
+        --theme-control-bg: #{dark.$control-bg};
+        --theme-control-color: #{dark.$control-color};
+        --theme-control-border: #{dark.$control-border};
+        --theme-control-bg-disabled: #{dark.$control-bg-disabled};
+        --theme-control-color-disabled: #{dark.$control-color-disabled};
+        --theme-control-border-color-disabled: #{dark.$control-border-color-disabled};
+        --theme-control-border-color-hover: #{dark.$control-border-color-hover};
+        --theme-control-border-color-focus: #{dark.$control-border-color-focus};
+        --theme-control-box-shadow-focus: #{dark.$control-box-shadow-focus};
+        --theme-control-border-color-invalid: #{dark.$control-border-color-invalid};
+        --theme-control-box-shadow-invalid-focus: #{dark.$control-box-shadow-invalid-focus};
+        --theme-control-bg-active: #{dark.$control-bg-active};
+        --theme-control-bg-inactive: #{dark.$control-bg-inactive};
+        --theme-control-bg-active-hover: #{dark.$control-bg-active-hover};
+        --theme-control-bg-inactive-hover: #{dark.$control-bg-inactive-hover};
+
+        --theme-tabs-tab-color: #{dark.$tabs-tab-color};
+        --theme-tabs-tab-color-active: #{dark.$tabs-tab-color-active};
+        --theme-tabs-tab-color-hover: #{dark.$tabs-tab-color-hover};
+        --theme-tabs-tab-color-active-hover: #{dark.$tabs-tab-color-active-hover};
+
+        --theme-tabs-tab-bg: #{dark.$tabs-tab-bg};
+        --theme-tabs-tab-bg-active: #{dark.$tabs-tab-bg-active};
+        --theme-tabs-tab-bg-hover: #{dark.$tabs-tab-bg-hover};
+        --theme-tabs-tab-bg-active-hover: #{dark.$tabs-tab-bg-active-hover};
+    }
+}
+
+// Further is export of all possible variables that can be themed, with fallback to default.
+$white: var(--theme-white);
+$grey: var(--theme-grey);
+$grey-light: var(--theme-grey-light);
+$grey-lighter: var(--theme-grey-lighter);
+$grey-lightest: var(--theme-grey-lightest);
+$grey-darker: var(--theme-grey-darker);
+$grey-darkest: var(--theme-grey-darkest);
+$black: var(--theme-black);
+
+$primary: var(--theme-primary);
+$primary-rgb: var(--theme-primary-rgb);
+$primary-light: var(--theme-primary-light);
+$primary-lighter: var(--theme-primary-lighter);
+$primary-lightest: var(--theme-primary-lightest);
+$primary-dark: var(--theme-primary-dark);
+$primary-darker: var(--theme-primary-darker);
+$primary-darkest: var(--theme-primary-darkest);
+
+$warning: var(--theme-warning);
+$warning-light: var(--theme-warning-light);
+$warning-dark: var(--theme-warning-dark);
+$info: var(--theme-info);
+$info-light: var(--theme-info-light);
+$info-dark: var(--theme-info-dark);
+$danger: var(--theme-danger);
+$danger-light: var(--theme-danger-light);
+$danger-dark: var(--theme-danger-dark);
+$success: var(--theme-success);
+$success-light: var(--theme-success-light);
+$success-dark: var(--theme-success-dark);
+
+$fullscreen-bg-color: var(--theme-fullscreen-bg-color);
+$fullscreen-bg-gradient: var(--theme-fullscreen-bg-gradient);
+$fullscreen-card-bg: var(--theme-fullscreen-card-bg);
+$fullscreen-title-font-size: var(--theme-fullscreen-title-font-size);
+$fullscreen-slogan-font-size: var(--theme-fullscreen-slogan-font-size);
+$fullscreen-description-font-size: var(--theme-fullscreen-description-font-size);
+$fullscreen-logo-height: var(--theme-fullscreen-logo-height);
+$fullscreen-logo-color: var(--theme-fullscreen-logo-color);
+$fullscreen-logo-color-invert: var(--theme-fullscreen-logo-color-invert);
+$fullscreen-filter: var(--theme-fullscreen-filter);
+
+$overlay-bg: var(--theme-overlay-bg);
+$overlay-color: var(--theme-overlay-color);
+
+$topbar-bg: var(--theme-topbar-bg);
+$topbar-height: var(--theme-topbar-height);
+
+$page-control-user-logo-color: var(--theme-page-control-user-logo-color);
+$page-control-user-logo-color-hover: var(--theme-page-control-user-logo-color-hover);
+
+$page-breadcrumb-icon-color: var(--theme-page-breadcrumb-icon-color);
+
+$close-button-icon-color: var(--theme-close-button-icon-color);
+
+$sidemenu-width: var(--theme-sidemenu-width);
+$sidemenu-background-filter: var(--theme-sidemenu-background-filter);
+$sidemenu-background: var(--theme-sidemenu-background);
+$sidemenu-logo-color: var(--theme-sidemenu-logo-color);
+$sidemenu-logo-color-collapsed: var(--theme-sidemenu-logo-color-collapsed);
+$sidemenu-logo-section-height: var(--theme-sidemenu-logo-section-height);
+$sidemenu-logo-height: var(--theme-sidemenu-logo-height);
+$sidemenu-logo-small-height: var(--theme-sidemenu-logo-small-height);
+$sidemenu-logo-font-size: var(--theme-sidemenu-logo-font-size);
+$sidemenu-logo-small-font-size: var(--theme-sidemenu-logo-small-font-size);
+
+$sidemenu-section-header-bg: var(--theme-sidemenu-section-header-bg);
+$sidemenu-section-header-bg-hover: var(--theme-sidemenu-section-header-bg-hover);
+$sidemenu-section-header-color: var(--theme-sidemenu-section-header-color);
+$sidemenu-section-header-border-radius: var(--theme-sidemenu-section-header-border-radius);
+
+// Collapsed state
+$sidemenu-width-collapsed: var(--theme-sidemenu-width-collapsed);
+$sidemenu-background-filter-collapsed: var(--theme-sidemenu-background-filter-collapsed);
+$sidemenu-section-header-bg-collapsed: var(--theme-sidemenu-section-header-bg-collapsed);
+$sidemenu-sticky-icon-color: var(--theme-sidemenu-sticky-icon-color);
+
+$sidemenu-menuitem-color: var(--theme-sidemenu-menuitem-color);
+$sidemenu-menuitem-color-active: var(--theme-sidemenu-menuitem-color-active);
+$sidemenu-menuitem-color-hover: var(--theme-sidemenu-menuitem-color-hover);
+$sidemenu-menuitem-color-active-hover: var(--theme-sidemenu-menuitem-color-active-hover);
+
+$sidemenu-menuitem-bg: var(--theme-sidemenu-menuitem-bg-color);
+$sidemenu-menuitem-bg-active: var(--theme-sidemenu-menuitem-bg-active);
+$sidemenu-menuitem-bg-hover: var(--theme-sidemenu-menuitem-bg-hover);
+$sidemenu-menuitem-bg-active-hover: var(--theme-sidemenu-menuitem-bg-active-hover);
+
+$sidemenu-menuitem-icon-color: var(--theme-sidemenu-menuitem-icon-color);
+
+$sidemenu-submenu-border-radius: var(--theme-sidemenu-submenu-border-radius);
+$sidemenu-submenu-bg: var(--theme-sidemenu-submenu-bg);
+
+$sidemenu-submenu-menuitem-color: var(--theme-sidemenu-submenu-menuitem-color);
+$sidemenu-submenu-menuitem-color-active: var(--theme-sidemenu-submenu-menuitem-color-active);
+$sidemenu-submenu-menuitem-color-hover: var(--theme-sidemenu-submenu-menuitem-color-hover);
+$sidemenu-submenu-menuitem-color-active-hover: var(
+    --theme-sidemenu-submenu-menuitem-color-active-hover
+);
+
+$sidemenu-submenu-menuitem-bg: var(--theme-sidemenu-submenu-menuitem-bg-color);
+$sidemenu-submenu-menuitem-bg-active: var(--theme-sidemenu-submenu-menuitem-bg-active);
+$sidemenu-submenu-menuitem-bg-hover: var(--theme-sidemenu-submenu-menuitem-bg-hover);
+$sidemenu-submenu-menuitem-bg-active-hover: var(--theme-sidemenu-submenu-menuitem-bg-active-hover);
+
+$tabs-tab-color: var(--theme-tabs-tab-color);
+$tabs-tab-color-active: var(--theme-tabs-tab-color-active);
+$tabs-tab-color-hover: var(--theme-tabs-tab-color-hover);
+$tabs-tab-color-active-hover: var(--theme-tabs-tab-color-active-hover);
+$tabs-tab-bg: var(--theme-tabs-tab-bg);
+$tabs-tab-bg-active: var(--theme-tabs-tab-bg-active);
+$tabs-tab-bg-hover: var(--theme-tabs-tab-bg-hover);
+$tabs-tab-bg-active-hover: var(--theme-tabs-tab-bg-active-hover);
+
+$default-font-family: var(--theme-default-font-family);
+$default-font-size: var(--theme-default-font-size);
+$default-icon-font-family: default.$default-icon-font-family;
+$default-bg-color: var(--theme-default-bg-color);
+$default-bg-color-darker: var(--theme-default-bg-color-darker);
+$default-bg-color-hover: var(--theme-default-bg-color-hover);
+$default-border-color: var(--theme-default-border-color);
+$default-border-color-dark: var(--theme-default-border-color-dark);
+$default-text-color: var(--theme-default-text-color);
+$default-text-color-hover: var(--theme-default-text-color-hover);
+$default-link-color: var(--theme-default-link-color);
+$default-link-color-hover: var(--theme-default-link-color-hover);
+$default-padding: var(--theme-default-padding);
+$default-content-padding: var(--theme-default-content-padding);
+
+$control-border-radius: var(--theme-control-border-radius);
+$button-border-radius: var(--theme-button-border-radius);
+
+$control-icon-color: var(--theme-control-icon-color);
+$control-icon-color-hover: var(--theme-control-icon-color-hover);
+$control-dropdown-color: var(--theme-control-dropdown-color);
+$control-dropdown-color-hover: var(--theme-control-dropdown-color-hover);
+
+$control-height: var(--theme-control-height);
+
+$control-bg: var(--theme-control-bg);
+$control-color: var(--theme-control-color);
+$control-border: var(--theme-control-border);
+$control-box-shadow: var(--theme-control-box-shadow);
+
+$control-bg-disabled: var(--theme-control-bg-disabled);
+$control-color-disabled: var(--theme-control-color-disabled);
+$control-border-color-disabled: var(--theme-control-border-color-disabled);
+
+$control-border-color-hover: var(--theme-control-border-color-hover);
+$control-border-color-focus: var(--theme-control-border-color-focus);
+$control-box-shadow-focus: var(--theme-control-box-shadow-focus);
+
+$control-border-color-invalid: var(--theme-control-border-color-invalid);
+$control-box-shadow-invalid-focus: var(--theme-control-box-shadow-invalid-focus);
+
+$control-bg-active: var(--theme-control-bg-active);
+$control-bg-inactive: var(--theme-control-bg-inactive);
+$control-bg-active-hover: var(--theme-control-bg-active-hover);
+$control-bg-inactive-hover: var(--theme-control-bg-inactive-hover);
+
+// Button default
+$button-default-border: var(--theme-button-default-border);
+$button-default-bg: var(--theme-button-default-bg);
+$button-default-color: var(--theme-button-default-color);
+
+$button-default-bg-active: var(--theme-button-default-bg-active);
+$button-default-border-color-active: var(--theme-button-default-border-color-active);
+$button-default-color-active: var(--theme-button-default-color-active);
+
+$button-default-bg-hover: var(--theme-button-default-bg-hover);
+$button-default-border-color-hover: var(--theme-button-default-border-color-hover);
+$button-default-color-hover: var(--theme-button-default-color-hover);
+
+$button-default-bg-focus: var(--theme-button-default-bg-focus);
+$button-default-border-color-focus: var(--theme-button-default-border-color-focus);
+$button-default-color-focus: var(--theme-button-default-color-focus);
+
+$button-default-bg-disabled: var(--theme-button-default-bg-disabled);
+$button-default-border-color-disabled: var(--theme-button-default-border-color-disabled);
+$button-default-color-disabled: var(--theme-button-default-color-disabled);
+
+$button-default-box-shadow-focus: var(--theme-button-default-box-shadow-focus);
+$button-default-loading-color: var(--theme-button-default-loading-color);
+
+// Button primary
+$button-primary-border: var(--theme-button-primary-border);
+$button-primary-bg: var(--theme-button-primary-bg);
+$button-primary-color: var(--theme-button-primary-color);
+
+$button-primary-bg-active: var(--theme-button-primary-bg-active);
+$button-primary-border-color-active: var(--theme-button-primary-border-color-active);
+$button-primary-color-active: var(--theme-button-primary-color-active);
+
+$button-primary-bg-hover: var(--theme-button-primary-bg-hover);
+$button-primary-border-color-hover: var(--theme-button-primary-border-color-hover);
+$button-primary-color-hover: var(--theme-button-primary-color-hover);
+
+$button-primary-bg-focus: var(--theme-button-primary-bg-focus);
+$button-primary-border-color-focus: var(--theme-button-primary-border-color-focus);
+$button-primary-color-focus: var(--theme-button-primary-color-focus);
+
+$button-primary-bg-disabled: var(--theme-button-primary-bg-disabled);
+$button-primary-border-color-disabled: var(--theme-button-primary-border-color-disabled);
+$button-primary-color-disabled: var(--theme-button-primary-color-disabled);
+
+$button-primary-box-shadow-focus: var(--theme-button-primary-box-shadow-focus);
+$button-primary-loading-color: var(--theme-button-primary-loading-color);
+
+// Button danger
+$button-danger-border: var(--theme-button-danger-border);
+$button-danger-bg: var(--theme-button-danger-bg);
+$button-danger-color: var(--theme-button-danger-color);
+
+$button-danger-bg-active: var(--theme-button-danger-bg-active);
+$button-danger-border-color-active: var(--theme-button-danger-border-color-active);
+$button-danger-color-active: var(--theme-button-danger-color-active);
+
+$button-danger-bg-hover: var(--theme-button-danger-bg-hover);
+$button-danger-border-color-hover: var(--theme-button-danger-border-color-hover);
+$button-danger-color-hover: var(--theme-button-danger-color-hover);
+
+$button-danger-bg-focus: var(--theme-button-danger-bg-focus);
+$button-danger-border-color-focus: var(--theme-button-danger-border-color-focus);
+$button-danger-color-focus: var(--theme-button-danger-color-focus);
+
+$button-danger-bg-disabled: var(--theme-button-danger-bg-disabled);
+$button-danger-border-color-disabled: var(--theme-button-danger-border-color-disabled);
+$button-danger-color-disabled: var(--theme-button-danger-color-disabled);
+
+$button-outlined-danger-border: var(--theme-button-outlined-danger-border);
+$button-outlined-danger-bg: var(--theme-button-outlined-danger-bg);
+$button-outlined-danger-color: var(--theme-button-outlined-danger-color);
+$button-outlined-danger-bg-hover: var(--theme-button-outlined-danger-bg-hover);
+
+$button-danger-box-shadow-focus: var(--theme-button-danger-box-shadow-focus);
+$button-danger-loading-color: var(--theme-button-danger-loading-color);
+
+// Button success
+$button-success-border: var(--theme-button-success-border);
+$button-success-bg: var(--theme-button-success-bg);
+$button-success-color: var(--theme-button-success-color);
+
+$button-success-bg-active: var(--theme-button-success-bg-active);
+$button-success-border-color-active: var(--theme-button-success-border-color-active);
+$button-success-color-active: var(--theme-button-success-color-active);
+
+$button-success-bg-hover: var(--theme-button-success-bg-hover);
+$button-success-border-color-hover: var(--theme-button-success-border-color-hover);
+$button-success-color-hover: var(--theme-button-success-color-hover);
+
+$button-success-bg-focus: var(--theme-button-success-bg-focus);
+$button-success-border-color-focus: var(--theme-button-success-border-color-focus);
+$button-success-color-focus: var(--theme-button-success-color-focus);
+
+$button-success-bg-disabled: var(--theme-button-success-bg-disabled);
+$button-success-border-color-disabled: var(--theme-button-success-border-color-disabled);
+$button-success-color-disabled: var(--theme-button-success-color-disabled);
+
+$button-success-box-shadow-focus: var(--theme-button-success-box-shadow-focus);
+$button-success-loading-color: var(--theme-button-success-loading-color);
+
+$card-bg: var(--theme-card-bg);
+$card-header-bg: var(--theme-card-header-bg);
+$card-header-bg-light: var(--theme-card-header-bg-light);
+$card-header-title-color: var(--theme-card-header-title-color);
+$card-header-title-font-size: var(--theme-card-header-title-font-size);
+$card-header-subtitle-color: var(--theme-card-header-subtitle-color);
+$card-header-subtitle-font-size: var(--theme-card-header-subtitle-font-size);
+$card-header-counter-color: var(--theme-card-header-counter-color);
+$card-header-counter-font-size: var(--theme-card-header-counter-font-size);
+$card-border-radius: var(--theme-card-border-radius);
+
+$modal-bg: var(--theme-modal-bg);
+$modal-overlay-bg: var(--theme-modal-overlay-bg);
+$modal-header-bg: var(--theme-modal-header-bg);
+$modal-header-title-color: var(--theme-modal-header-title-color);
+$modal-header-title-font-size: var(--theme-modal-header-title-font-size);
+$modal-header-subtitle-color: var(--theme-modal-header-subtitle-color);
+$modal-header-subtitle-font-size: var(--theme-modal-header-subtitle-font-size);
+$modal-header-counter-color: var(--theme-modal-header-counter-color);
+$modal-header-counter-font-size: var(--theme-modal-header-counter-font-size);
+$modal-border-radius: var(--theme-modal-border-radius);
+
+$notification-icon-primary: var(--theme-notification-icon-primary);
+$notification-icon-danger: var(--theme-notification-icon-danger);
+$notification-icon-success: var(--theme-notification-icon-success);
+
+// Dropdown item colors
+$dropdown-item-color: var(--theme-dropdown-item-color);
+$dropdown-item-bg: var(--theme-dropdown-item-bg);
+$dropdown-item-bg-hover: var(--theme-dropdown-item-bg-hover);
+$dropdown-item-color-hover: var(--theme-dropdown-item-color-hover);
+
+$dropdown-item-empty-color: var(--theme-dropdown-item-empty-color);
+$dropdown-item-new-color: var(--theme-dropdown-item-new-color);
+
+$dropdown-item-even-bg: var(--theme-dropdown-item-even-bg);
+$dropdown-item-highlight-bg: var(--theme-dropdown-item-highlight-bg);
+
+$dropdown-item-selected-icon-color: var(--theme-dropdown-item-selected-icon-color);
+$dropdown-item-selected-bg: var(--theme-dropdown-item-selected-bg);
+$dropdown-item-selected-color: var(--theme-dropdown-item-selected-color);
+$dropdown-item-selected-bg-hover: var(--theme-dropdown-item-selected-bg-hover);
+$dropdown-item-selected-color-hover: var(--theme-dropdown-item-selected-color-hover);
+
+// Item colored danger
+$dropdown-item-danger-icon-color: var(--theme-dropdown-item-danger-icon-color);
+$dropdown-item-danger-bg: var(--theme-dropdown-item-danger-bg);
+$dropdown-item-danger-color: var(--theme-dropdown-item-danger-color);
+$dropdown-item-danger-bg-hover: var(--theme-dropdown-item-danger-bg-hover);
+$dropdown-item-danger-color-hover: var(--theme-dropdown-item-danger-color-hover);
+
+$dropdown-item-danger-selected-icon-color: var(--theme-dropdown-item-danger-selected-icon-color);
+$dropdown-item-danger-selected-bg: var(--theme-dropdown-item-danger-selected-bg);
+$dropdown-item-danger-selected-color: var(--theme-dropdown-item-danger-selected-color);
+$dropdown-item-danger-selected-bg-hover: var(--theme-dropdown-item-danger-selected-bg-hover);
+$dropdown-item-danger-selected-color-hover: var(--theme-dropdown-item-danger-selected-color-hover);
+
+// Item colored success
+$dropdown-item-success-icon-color: var(--theme-dropdown-item-success-icon-color);
+$dropdown-item-success-bg: var(--theme-dropdown-item-success-bg);
+$dropdown-item-success-color: var(--theme-dropdown-item-success-color);
+$dropdown-item-success-bg-hover: var(--theme-dropdown-item-success-bg-hover);
+$dropdown-item-success-color-hover: var(--theme-dropdown-item-success-color-hover);
+
+$dropdown-item-success-selected-icon-color: var(--theme-dropdown-item-success-selected-icon-color);
+$dropdown-item-success-selected-bg: var(--theme-dropdown-item-success-selected-bg);
+$dropdown-item-success-selected-color: var(--theme-dropdown-item-success-selected-color);
+$dropdown-item-success-selected-bg-hover: var(--theme-dropdown-item-success-selected-bg-hover);
+$dropdown-item-success-selected-color-hover: var(
+    --theme-dropdown-item-success-selected-color-hover
+);
+
+$table-header-bg: var(--theme-table-header-bg);
+$table-header-color: var(--theme-table-header-color);
+$table-row-header-bg: var(--theme-table-row-header-bg);
+$table-row-bg: var(--theme-table-row-bg);
+$table-row-bg-hover: var(--theme-table-row-bg-hover);
+$table-row-bg-hover-gradient: var(--theme-table-row-bg-hover-gradient);
+$table-row-even-bg: var(--theme-table-row-even-bg);
+$table-row-even-bg-hover: var(--theme-table-row-even-bg-hover);
+
+$table-cell-toggle-bg: var(--theme-table-cell-toggle-bg);
+$table-cell-toggle-color: var(--theme-table-cell-toggle-color);
+$table-cell-toggle-icon-color: var(--theme-table-cell-toggle-icon-color);
+$table-cell-toggle-bg-hover: var(--theme-table-cell-toggle-bg-hover);
+$table-cell-toggle-even-bg: var(--theme-table-cell-toggle-even-bg);
+$table-cell-toggle-even-bg-hover: var(--theme-table-cell-toggle-even-bg-hover);
+
+$table-cell-expanded-bg: var(--theme-table-cell-expanded-bg);
+$table-cell-expanded-color: var(--theme-table-cell-expanded-color);
+$table-cell-expanded-icon-color: var(--theme-table-cell-expanded-icon-color);
+$table-cell-expanded-bg-hover: var(--theme-table-cell-expanded-bg-hover);
+$table-cell-expanded-even-bg: var(--theme-table-cell-expanded-even-bg);
+$table-cell-expanded-even-bg-hover: var(--theme-table-cell-expanded-even-bg-hover);
+
+$table-cell-color: var(--theme-table-cell-color);
+$table-cell-bg: var(--theme-table-cell-bg);
+$table-cell-bg-hover: var(--theme-table-cell-bg-hover);
+$table-cell-box-shadow-hover: var(--theme-table-cell-box-shadow-hover);
+
+$table-cell-icon-color: var(--theme-table-cell-icon-color);
+$table-cell-hovered-icon-color: var(--theme-table-cell-hovered-icon-color);
+$table-cell-hovered-icon-color-hover: var(--theme-table-cell-hovered-icon-color-hover);
+
+$table-cell-dropdown-arrow-color: var(--theme-table-cell-dropdown-arrow-color);
+$table-cell-dropdown-arrow-color-cellhover: var(--theme-table-cell-dropdown-arrow-color-cellhover);
+$table-cell-dropdown-arrow-color-cellhover-hover: var(
+    --theme-table-cell-dropdown-arrow-color-cellhover-hover
+);
+
+$table-cell-placeholder-color: var(--theme-table-cell-placeholder-color);
+$table-cell-placeholder-color-hover: var(--theme-table-cell-placeholder-color-hover);
+$table-cell-placeholder-invalid-color: var(--theme-table-cell-placeholder-invalid-color);
+$table-cell-placeholder-invalid-color-hover: var(
+    --theme-table-cell-placeholder-invalid-color-hover
+);
+
+$table-cell-color-hover: var(--theme-table-cell-color-hover);
+$table-cell-border-color: var(--theme-table-cell-border-color);
+
+$table-cell-disabled-color: var(--theme-table-cell-disabled-color);
+$table-cell-disabled-bg: var(--theme-table-cell-disabled-bg);
+
+$table-cell-dimmed-color: var(--theme-table-cell-dimmed-color);
+$table-cell-dimmed-bg: var(--theme-table-cell-dimmed-bg);
+$table-cell-dimmed-border: var(--theme-table-cell-dimmed-border);
+$table-cell-dimmed-even-bg: var(--theme-table-cell-dimmed-even-bg);
+
+$table-cell-dimmed-color-hover: var(--theme-table-cell-dimmed-color-hover);
+$table-cell-dimmed-bg-hover: var(--theme-table-cell-dimmed-bg-hover);
+$table-cell-dimmed-even-bg-hover: var(--theme-table-cell-dimmed-even-bg-hover);
+
+$table-cell-highlight-bg: var(--theme-table-cell-highlight-bg);
+$table-cell-highlight-color: var(--theme-table-cell-highlight-color);
+
+$table-cell-summary-bg: var(--theme-table-cell-summary-bg);
+$table-cell-summary-color: var(--theme-table-cell-summary-color);
+
+$table-cell-section-bg: var(--theme-table-cell-section-bg);
+$table-cell-section-color: var(--theme-table-cell-section-color);
+
+$table-cell-selected-color: var(--theme-table-cell-selected-color);
+$table-cell-selected-border-color: var(--theme-table-cell-selected-border-color);
+
+$table-header-selected-bg: var(--theme-table-header-selected-bg);
+$table-header-primary-color: var(--theme-table-header-primary-color);
+
+$table-header-highlighted-bg: var(--theme-table-header-highlighted-bg);
+
+$table-cell-text-editor-filter: var(--theme-table-cell-text-editor-filter);
+$table-cell-text-editor-border: var(--theme-table-cell-text-editor-border);
+
+$table-cell-invalid-bg: var(--theme-table-cell-invalid-bg);
+$table-cell-invalid-bg-hover: var(--theme-table-cell-invalid-bg-hover);
+$table-cell-invalid-color: var(--theme-table-cell-invalid-color);
+$table-cell-invalid-color-hover: var(--theme-table-cell-invalid-color-hover);
+$table-cell-invalid-box-shadow: var(--theme-table-cell-invalid-box-shadow);
+
+$table-input-box-shadow: var(--theme-table-input-box-shadow);
+
+$scrollbar-track-color: var(--theme-scrollbar-track-color);
+$scrollbar-thumb-color: var(--theme-scrollbar-thumb-color);
+$scrollbar-thumb-color-hover: var(--theme-scrollbar-thumb-color-hover);
+$scrollbar-width: var(--theme-scrollbar-width);
+$scrollbar-height: var(--theme-scrollbar-height);
+
+// Shadows
+$shadow-xs: default.$shadow-xs;
+$shadow-sm: default.$shadow-sm;
+$shadow-md: default.$shadow-md;
+$shadow-lg: default.$shadow-lg;
+$shadow-xl: default.$shadow-xl;
+$shadow-2xl: default.$shadow-2xl;
+$shadow-3xl: default.$shadow-3xl;
+$ring-gray: default.$ring-gray;
+$ring-gray-secondary: default.$ring-gray-secondary;
+$ring-gray-shadow-xs: default.$ring-gray-shadow-xs;
+$ring-gray-shadow-sm: default.$ring-gray-shadow-sm;
+$ring-brand: default.$ring-brand;
+$ring-brand-shadow-xs: default.$ring-brand-shadow-xs;
+$ring-brand-shadow-sm: default.$ring-brand-shadow-sm;
+$ring-error: default.$ring-error;
+$ring-error-shadow-xs: default.$ring-error-shadow-xs;

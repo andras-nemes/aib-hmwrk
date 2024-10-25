@@ -1,0 +1,41 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": true,
+        "lib": ["dom", "dom.iterable", "es6"],
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "noEmit": false,
+        "resolveJsonModule": true,
+        "strict": true,
+        "target": "es6",
+        "baseUrl": ".",
+        "outDir": "dist",
+        "paths": {
+            "lib/*": ["src/lib/*"],
+            "misc/*": ["src/misc/*"],
+            "assets/*": ["src/assets/*"],
+            "components/*": ["src/components/*"],
+            "views/*": ["src/views/*"],
+            "store/*": ["src/store/*"],
+            "types/*": ["src/types/*"],
+            "routes/*": ["src/routes/*"],
+            "runtime/*": ["src/runtime/*"],
+            "src/*": ["src/*"],
+            "~@/*": ["src/*"]
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.vue",
+        "tests/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

@@ -1,0 +1,468 @@
+// CSS for Aibidia fast-renderer table cell renderers.
+
+.aibidia-hot > .handsontable {
+    // Date and autocomplete has dropdown arrow, but not on read only htDimmed cells.
+    td.aibidia-date,
+    td.aibidia-multiselect,
+    td.aibidia-autocomplete {
+        &:not(.htDimmed):not(.area) {
+            position: relative;
+            // Padding must be added so text won't go over the arrow
+            padding-right: 2em;
+            &:after {
+                // Arrow is absolute positioned, and requires precise pixel placement
+                position: absolute;
+                display: block;
+                content: ' ';
+
+                border: 1px solid theme.$table-cell-dropdown-arrow-color;
+                border-right: 0;
+                border-top: 0;
+
+                transform: rotate(-45deg);
+                transform-origin: center;
+                height: 0.5em;
+                width: 0.5em;
+                margin-top: -4px;
+                right: 9px;
+                top: 17px;
+            }
+        }
+    }
+
+    // Attachments
+    td.aibidia-attachments {
+        position: relative;
+        // Padding is added so that text is not getting under the add button
+        padding-top: 0;
+        padding-bottom: 0;
+        // Whitespace must be "pre", so that linebreaks \n break the text, as we can't use <br/>'s in fast-renderer
+        white-space: pre;
+        &.htNoWrap {
+            white-space: pre;
+        }
+
+        // Attachment text is sized so that two lines will fit into the cell at once
+        line-height: 1.5;
+        font-size: 11px;
+        cursor: pointer;
+    }
+
+    // Cells which show text as a link
+    td.is-link {
+        cursor: pointer;
+        outline: none;
+        text-decoration: underline;
+    }
+
+    // Cells that has action icon
+    td.has-action {
+        padding-right: 32px;
+        &:not(.area):after {
+            // Action icon
+            content: attr(data-action-icon);
+
+            // Action icon is absolutely positioned
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            color: theme.$table-cell-icon-color;
+
+            // FontAwesome icon styles
+            font-family: theme.$default-icon-font-family;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 900;
+
+            // Icon look
+            background-color: transparent;
+            font-size: 0.85rem;
+            // Full row height
+            line-height: 33px;
+            cursor: pointer;
+
+            padding-left: 0.6em;
+            padding-right: 0.6em;
+            text-align: center;
+
+            // Positioning
+            pointer-events: auto;
+        }
+
+        // If action icon is an element, color the hover state
+        &:hover {
+            > .cell-wrapper > label > .action-icon {
+                color: theme.$table-cell-hovered-icon-color;
+
+                &:hover {
+                    color: theme.$table-cell-hovered-icon-color-hover;
+                }
+            }
+        }
+
+        // Action can have loading indicator, so we fake it here by animating FA loading spinner icon
+        &.loading:after {
+            // Loading spinner
+            content: '\f1ce';
+            animation: loading-spin 1s infinite linear;
+            border: 1px solid transparent;
+            // Prevents some wobbling on Webkit browsers
+            // See https://github.com/FortAwesome/Font-Awesome/issues/671 for more details
+            -webkit-filter: blur(0);
+            filter: inherit;
+            width: initial;
+            height: initial;
+        }
+
+        // Actions can have disabled state
+        &.disable-action:after {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        &.empty-row .action-icon,
+        &.empty-row:after {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    // Animation for the loading spinner
+    @keyframes loading-spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+        }
+    }
+
+    // Delete button will look like a danger button
+    .aibidia-hot-cell-hover.aibidia-delete > .row-delete,
+    td.aibidia-delete {
+        text-align: right;
+        white-space: nowrap;
+        text-overflow: clip;
+        color: theme.$table-cell-icon-color;
+
+        // Delete button renderer has no text, just a button
+        &:after {
+            display: inline;
+
+            // Delete icon styles
+            font-family: theme.$default-icon-font-family;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 900;
+            // Trash icon
+            content: '\f1f8';
+
+            // Danger button styles
+            font-size: 0.75rem;
+            cursor: pointer;
+            justify-content: center;
+
+            padding: 0.5em 0.6em 0.5em 0.6em;
+            text-align: center;
+            pointer-events: auto;
+        }
+
+        // Disabled button styles (empty row is also disabled)
+        &.empty-row:after,
+        &.disable-action:after {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    td.permanentPlaceholder {
+        position: relative;
+        padding-left: 32px;
+
+        &:not(.area):before,
+        &.area:after {
+            content: attr(data-placeholder);
+            color: theme.$table-cell-placeholder-color;
+            position: absolute;
+            left: 0.3em;
+            top: 0.6em;
+        }
+    }
+
+    td.permanentPlaceholder:hover {
+        &:not(.area):before,
+        &.area:after {
+            color: theme.$table-cell-placeholder-color-hover;
+        }
+    }
+
+    td.permanentPlaceholder.htInvalid {
+        &:not(.area):before,
+        &.area:after {
+            color: theme.$table-cell-placeholder-invalid-color;
+        }
+    }
+
+    td.has-icon {
+        position: relative;
+        padding-left: 28px;
+
+        &:not(.area):before,
+        &.area:after {
+            font-family: theme.$default-icon-font-family;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            background-color: transparent;
+            color: theme.$table-cell-icon-color;
+            font-weight: 900;
+            font-size: 14px;
+
+            content: attr(data-icon);
+            position: absolute;
+            left: 0.5em;
+            top: 7px;
+        }
+    }
+
+    td.aibidia-checkbox {
+        text-align: center;
+        font-size: 1rem;
+        line-height: 0.7rem;
+
+        &:after {
+            display: inline-block;
+            width: 1.15em;
+            height: 1.14em;
+            border-radius: theme.$control-border-radius;
+            pointer-events: none;
+            content: ' ';
+        }
+
+        &:not(.htDimmed) {
+            &:after {
+                background: theme.$white;
+                border: 1px solid theme.$default-border-color-dark;
+            }
+
+            &.is-checked::after {
+                // ./source/hot-cell-is-checked.svg
+                background: theme.$primary
+                    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Cpath style='fill:white' d='M 0.04038059,0.6267767 0.14644661,0.52071068 0.42928932,0.80355339 0.3232233,0.90961941 z M 0.21715729,0.80355339 0.85355339,0.16715729 0.95961941,0.2732233 0.3232233,0.90961941 z'%3E%3C/path%3E%3C/svg%3E")
+                    no-repeat center center;
+                background-size: 14px 14px;
+                border-color: theme.$primary;
+            }
+        }
+
+        &.htDimmed {
+            &.is-checked::after {
+                // ./source/hot-cell-is-checked.svg
+                background: transparent
+                    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Cpath style='fill:grey' d='M 0.04038059,0.6267767 0.14644661,0.52071068 0.42928932,0.80355339 0.3232233,0.90961941 z M 0.21715729,0.80355339 0.85355339,0.16715729 0.95961941,0.2732233 0.3232233,0.90961941 z'%3E%3C/path%3E%3C/svg%3E")
+                    no-repeat center center;
+                background-size: 14px 14px;
+                border-color: theme.$default-border-color-dark;
+            }
+        }
+
+        &.hot-disabled {
+            &::after {
+                background: theme.$grey-lighter;
+                border-color: theme.$default-border-color-dark;
+            }
+
+            &.is-checked::after {
+                // ./source/hot-cell-is-checked-disabled.svg
+                background: transparent
+                    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Cpath style='fill:grey' d='M 0.04038059,0.6267767 0.14644661,0.52071068 0.42928932,0.80355339 0.3232233,0.90961941 z M 0.21715729,0.80355339 0.85355339,0.16715729 0.95961941,0.2732233 0.3232233,0.90961941 z'%3E%3C/path%3E%3C/svg%3E")
+                    no-repeat center center;
+                background-size: 14px 14px;
+                border-color: theme.$default-border-color-dark;
+            }
+        }
+    }
+
+    // Checkbox renderer (not fast-renderer)
+    td .hot-checkbox {
+        outline: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        cursor: pointer;
+        line-height: 1.25;
+        position: relative;
+        height: 100%;
+        width: 100%;
+
+        > .check {
+            width: 1.5em;
+            height: 1.5em;
+            flex-shrink: 0;
+            border-radius: theme.$control-border-radius;
+            border: 1px solid theme.$button-default-border-color-hover;
+        }
+
+        input[type='checkbox'] {
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            outline: none;
+            z-index: -1;
+        }
+
+        input[type='checkbox']:checked + .check.is-success {
+            // ./source/hot-cell-is-checked.svg
+            background: theme.$primary
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Cpath style='fill:white' d='M 0.04038059,0.6267767 0.14644661,0.52071068 0.42928932,0.80355339 0.3232233,0.90961941 z M 0.21715729,0.80355339 0.85355339,0.16715729 0.95961941,0.2732233 0.3232233,0.90961941 z'%3E%3C/path%3E%3C/svg%3E")
+                no-repeat center center;
+            background-size: 14px 14px;
+            border-color: theme.$primary;
+        }
+
+        &[disabled] {
+            color: theme.$button-default-border-color-disabled;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+    }
+
+    td.aibidia-action {
+        text-align: center;
+        font-size: 0.75rem;
+        line-height: 0.7rem;
+        &:after {
+            display: inline-block;
+            line-height: 21px;
+            width: 100%;
+            font-size: 0.75rem;
+            border-radius: theme.$button-border-radius;
+            pointer-events: none;
+            content: attr(data-action);
+            background-color: theme.$button-primary-bg;
+            color: theme.$button-primary-color;
+        }
+
+        // Button with the spinner
+        &.loading:after {
+            content: '';
+            background-color: transparent;
+            padding: 0;
+            animation: loading-spin 1s infinite linear;
+            -webkit-animation: loading-spin 1s infinite;
+            height: 14px;
+            border: 3px solid theme.$primary;
+            border-top-color: theme.$primary-lighter;
+            border-radius: 50px;
+            width: 14px;
+        }
+
+        &.is-hidden:after {
+            display: none;
+        }
+    }
+
+    td.aibidia-action.aibidia-action-icon {
+        &:after {
+            font-family: theme.$default-icon-font-family;
+            font-weight: 900;
+            color: theme.$table-cell-icon-color;
+            background: none;
+        }
+
+        &.hot-expanded-row {
+            &:after {
+                color: theme.$table-cell-expanded-icon-color;
+            }
+        }
+
+        &.hot-toggle-row {
+            &:after {
+                color: theme.$table-cell-toggle-icon-color;
+            }
+        }
+    }
+}
+
+.aibidia-hot > .handsontable tbody {
+    tr:hover,
+    tr {
+        // Generic overrides
+
+        // Numeric renderers are aligned right
+        .aibidia-hot-cell-hover.aibidia-numeric,
+        td.aibidia-numeric {
+            text-align: right !important;
+        }
+
+        .aibidia-hot-cell-hover,
+        td.htDimmed:not(.listbox),
+        td {
+            &.hot-color--danger {
+                color: theme.$danger;
+                font-weight: 700;
+            }
+
+            &.hot-color--success {
+                color: theme.$success-dark;
+                font-weight: 700;
+            }
+
+            &.hot-text--bold {
+                font-weight: 700;
+            }
+
+            &.hot-text--bold-primary {
+                font-weight: 700;
+                color: theme.$primary;
+            }
+
+            &.hot-background--dimmed {
+                background-color: theme.$grey-lighter;
+            }
+
+            &.hot-background--primary-lightest {
+                background-color: theme.$primary-lightest !important;
+            }
+        }
+
+        td.htPlaceholder {
+            &:hover {
+                color: theme.$table-cell-placeholder-color-hover;
+            }
+        }
+
+        td.htPlaceholder.htInvalid {
+            color: theme.$table-cell-placeholder-invalid-color;
+            &:hover {
+                color: theme.$table-cell-placeholder-invalid-color;
+            }
+        }
+
+        td.htCommentCell {
+            // ./source/hot-cell-comment-tag.svg
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3Cpolygon style="fill:%23783091" points="1,1 1,0 0,0 1,1" /%3E%3C/svg%3E') !important;
+            background-repeat: no-repeat !important;
+            background-position: top right !important;
+            background-size: 10px !important;
+
+            &:after {
+                position: relative;
+            }
+
+            &:not(.aibidia-checkbox) {
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+}

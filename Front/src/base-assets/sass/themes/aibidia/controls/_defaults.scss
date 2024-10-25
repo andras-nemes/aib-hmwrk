@@ -1,0 +1,47 @@
+@use '../colors';
+@use '../shadows';
+
+// Default/Common control variables
+
+// Rounding of corners
+$button-border-radius: 6px;
+$control-border-radius: 6px;
+$card-border-radius: 12px;
+
+$control-icon-color: var(--theme-grey-light);
+$control-icon-color-hover: var(--theme-grey-light);
+$control-height: 2.25em;
+
+$control-dropdown-color: var(--theme-grey-light);
+$control-dropdown-color-hover: var(--theme-grey-light);
+$control-bg: var(--theme-white);
+$control-color: var(--theme-default-text-color);
+$control-box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
+$control-border: 1px solid var(--theme-default-border-color-dark);
+$control-border-color-hover: var(--theme-default-border-color-dark);
+$control-border-color-focus: var(--theme-default-border-color-dark);
+$control-box-shadow-focus: shadows.$shadow-xs, shadows.$ring-gray-xs;
+
+$control-border-color-invalid: var(--theme-danger);
+$control-box-shadow-invalid-focus: 0 0 0 0.125em rgba(238, 80, 32, 0.12);
+
+$control-bg-disabled: colors.$gray-50;
+$control-color-disabled: var(--theme-grey-light);
+$control-border-color-disabled: var(--theme-default-border-color-dark);
+
+// Toggle icons ON, checkbox Checked
+$control-bg-active: var(--theme-primary);
+$control-bg-active-hover: var(--theme-primary-dark);
+
+// Toggle icons OFF
+$control-bg-inactive: var(--theme-grey-lighter);
+$control-bg-inactive-hover: var(--theme-grey-lighter);
+
+// Page controls that contain the user logo used to toggle PlatformMenu
+$page-control-user-logo-color: var(--theme-primary);
+$page-control-user-logo-color-hover: var(--theme-primary-dark);
+// Page breadcrumb icon
+$page-breadcrumb-icon-color: colors.$gray-400;
+
+// Close X-icon
+$close-button-icon-color: colors.$gray-400;

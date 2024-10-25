@@ -1,0 +1,12 @@
+@use '../colors';
+
+// Card
+$card-bg: var(--theme-white);
+$card-header-bg: colors.$gray-200;
+$card-header-bg-light: colors.$gray-100;
+$card-header-title-color: var(--theme-grey-darkest);
+$card-header-title-font-size: 1em;
+$card-header-subtitle-color: colors.$gray-600;
+$card-header-subtitle-font-size: 0.9em;
+$card-header-counter-color: colors.$gray-600;
+$card-header-counter-font-size: initial;

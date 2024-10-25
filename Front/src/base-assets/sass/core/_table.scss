@@ -1,0 +1,195 @@
+/**
+ * Necessary CSS rules for HTML table components
+ */
+
+@use 'theme';
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td,
+th {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.table {
+    display: table;
+    margin-bottom: 0;
+    border-collapse: separate;
+
+    thead tr th,
+    tfoot tr th {
+        vertical-align: middle;
+
+        span.columnSorting {
+            position: relative;
+
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+
+            &.ascending:before,
+            &.descending:before {
+                top: 50%;
+                margin-top: -6px;
+                padding-left: 8px;
+                position: absolute;
+                content: '';
+                height: 10px;
+                right: -9px;
+                width: 5px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position-x: right;
+            }
+
+            &.ascending:before {
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAoCAMAAADJ7yrpAAAAKlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKE86IAAAADXRSTlMABBEmRGprlJW72e77tTkTKwAAAFNJREFUeAHtzjkSgCAUBNHPgsoy97+ulGXRqJE5L+xkxoYt2UdsLb5bqFINz+aLuuLn5rIu2RkO3fZpWENimNgiw6iBYRTPMLJjGFxQZ1hxxb/xBI1qC8k39CdKAAAAAElFTkSuQmCC);
+            }
+
+            &.descending:before {
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAoCAMAAADJ7yrpAAAAKlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKE86IAAAADXRSTlMABBEmRGprlJW72e77tTkTKwAAAFJJREFUeAHtzjkSgCAQRNFmQYUZ7n9dKUvru0TmvPAn3br0QfgdZ5xx6x+rQn23GqTYnq1FDcnuzZIO2WmedVqIRVxgGKEyjNgYRjKGkZ1hFIZ3I70LyM0VtU8AAAAASUVORK5CYII=);
+            }
+        }
+    }
+
+    th:not([align]) {
+        text-align: left;
+    }
+
+    td,
+    th {
+        padding: 0.5em 0.75em;
+        vertical-align: top;
+        border-color: theme.$table-cell-border-color;
+    }
+
+    td.disabled {
+        background-color: #dbdbdb;
+        border-color: #dbdbdb;
+        color: #0a0a0a;
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    td .text--attachment-link {
+        color: theme.$default-link-color;
+        text-decoration: underline;
+        cursor: pointer;
+
+        &:hover {
+            color: theme.$table-cell-color-hover;
+        }
+    }
+
+    thead {
+        background-color: transparent;
+    }
+
+    thead tr,
+    tbody tr,
+    tfoot tr {
+        height: 30px;
+    }
+
+    tbody {
+        tr {
+            td {
+                vertical-align: middle;
+                padding: 0 4px;
+
+                &.cell--expandable {
+                    max-width: 0;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+
+    td,
+    th {
+        &.is-primary {
+            background-color: theme.$primary;
+            color: theme.$white;
+        }
+
+        &.is-primary-light {
+            background-color: theme.$primary-light;
+            color: theme.$white;
+        }
+
+        &.is-danger {
+            background-color: theme.$danger;
+            color: theme.$white;
+        }
+
+        &.is-danger-light {
+            background-color: theme.$danger-light;
+            color: theme.$white;
+        }
+
+        &.is-success {
+            background-color: theme.$success;
+            color: theme.$white;
+        }
+
+        &.is-success-light {
+            background-color: theme.$success-light;
+            color: theme.$white;
+        }
+
+        &.is-highlight {
+            background-color: theme.$table-cell-highlight-bg;
+            color: theme.$table-cell-highlight-color;
+        }
+
+        &.is-section {
+            background-color: theme.$table-cell-section-bg;
+            color: theme.$table-cell-section-color;
+        }
+    }
+
+    &.is-bordered {
+        td,
+        th {
+            border-right: 1px solid theme.$table-cell-border-color;
+            border-bottom: 1px solid theme.$table-cell-border-color;
+        }
+
+        thead tr th:first-child,
+        tbody tr td:first-child,
+        tbody tr th:first-child {
+            border-left: 1px solid theme.$table-cell-border-color;
+        }
+
+        thead tr th {
+            border-top: 1px solid theme.$table-cell-border-color;
+        }
+    }
+
+    &.is-striped {
+        tbody {
+            tr:not(.is-selected) {
+                background: theme.$table-row-bg;
+
+                &:hover {
+                    background: theme.$table-row-bg-hover-gradient;
+                }
+            }
+
+            tr:not(.is-selected):nth-child(even) {
+                background: theme.$table-row-even-bg;
+
+                &:hover {
+                    background: theme.$table-row-bg-hover-gradient;
+                }
+            }
+        }
+    }
+}

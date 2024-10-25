@@ -1,0 +1,47 @@
+@use 'defaults';
+@use 'controls/defaults' as controls;
+@use 'colors';
+
+// Side menu settings
+$sidemenu-width: 240px;
+$sidemenu-background: var(--theme-white);
+$sidemenu-background-filter: hue-rotate(-20deg) brightness(1.8) saturate(0.4);
+$sidemenu-logo-section-height: 3.5rem;
+$sidemenu-logo-height: 4rem;
+$sidemenu-logo-small-height: 2rem;
+$sidemenu-logo-font-size: 1.5em;
+$sidemenu-logo-small-font-size: 1em;
+$sidemenu-logo-color: var(--theme-grey-darker);
+$sidemenu-logo-color-collapsed: var(--theme-grey-darker);
+$sidemenu-section-header-bg: transparent;
+$sidemenu-section-header-bg-hover: rgba(var(--theme-white-rgb), 0.05);
+$sidemenu-section-header-color: var(--theme-grey-light);
+$sidemenu-section-header-border-radius: controls.$control-border-radius;
+
+// Collapsed
+$sidemenu-width-collapsed: 60px;
+$sidemenu-background-filter-collapsed: hue-rotate(-20deg) brightness(1.8) saturate(0.4);
+$sidemenu-section-header-bg-collapsed: $sidemenu-background;
+$sidemenu-sticky-icon-color: colors.$gray-600;
+
+$sidemenu-menuitem-color: var(--theme-grey);
+$sidemenu-menuitem-color-hover: var(--theme-grey-darker);
+$sidemenu-menuitem-color-active: var(--theme-grey-darker);
+$sidemenu-menuitem-color-active-hover: var(--theme-grey-darker);
+$sidemenu-menuitem-bg: transparent;
+$sidemenu-menuitem-bg-hover: colors.$gray-100;
+$sidemenu-menuitem-bg-active: colors.$gray-100;
+$sidemenu-menuitem-bg-active-hover: colors.$gray-100;
+$sidemenu-menuitem-icon-color: var(--theme-grey-light);
+
+$sidemenu-submenu-border-radius: 6px;
+$sidemenu-submenu-bg: var(--theme-white);
+
+$sidemenu-submenu-menuitem-color: $sidemenu-menuitem-color;
+$sidemenu-submenu-menuitem-color-hover: $sidemenu-menuitem-color;
+$sidemenu-submenu-menuitem-color-active: $sidemenu-menuitem-color;
+$sidemenu-submenu-menuitem-color-active-hover: $sidemenu-menuitem-color;
+$sidemenu-submenu-menuitem-bg: $sidemenu-menuitem-bg;
+$sidemenu-submenu-menuitem-bg-hover: $sidemenu-menuitem-bg-hover;
+$sidemenu-submenu-menuitem-bg-active: $sidemenu-menuitem-bg-active;
+$sidemenu-submenu-menuitem-bg-active-hover: $sidemenu-menuitem-bg-active-hover;
